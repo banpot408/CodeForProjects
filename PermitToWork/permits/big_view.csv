@@ -1,0 +1,11 @@
+label.permit_type,field.permit_type,label.description_pttgc,-,label.status,field.status,$schema big-view-layout/v1.0
+label.permit_no,field.permit_no,field.description_pttgc,field.description_pttgc,label.select_position_button,field.select_position_button
+label.valid_start,field.valid_start,+,+,label.prepared_by,field.prepared_by
+label.valid_end,field.valid_end,+,+,label.attachment,field.attachment
+label.area1,field.area1,+,+,+,+
+label.area2,field.area2,+,+,+,+
+label.area3,field.area3,+,+,+,+
+label.area4,field.area4,+,+,label.report_button,field.report_button
+label.required_certificates,field.required_certificates,+,+,label.related_permits,field.related_permits
+label.required_certs_links,field.required_certs_links,+,+,label.related_permits_links,field.related_permits_links
+8,12,10,50,8,12

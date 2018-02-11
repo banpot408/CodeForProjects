@@ -1,0 +1,14 @@
+version: "1.1"
+schema: "logbook"
+---
+overridden_mixins:
+    recordclass:
+        j5.PermitToWork.PermitToWork.CertificatesMixin: "PTTGC.PermitToWork.CustomPermitToWork.CustomCertificatesMixin"
+mixins:
+    recordclass:
+    - "PTTGC.PermitToWork.CertificatesMixin.CertificatesMixin"
+navigation:
+    title: "Specific Work Permit"
+    tabtitle: "Specific Work Permit"
+    menu: "Specific Work Permit"
+logmodel: "PTTGC.PermitToWork.CustomPermitToWork.CertificateLogModel"

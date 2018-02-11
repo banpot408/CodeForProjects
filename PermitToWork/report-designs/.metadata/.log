@@ -1,0 +1,13 @@
+!SESSION 2018-02-01 11:36:36.804 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_161
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.reporting.product C:\ProgramData\j5\generated_files\config-tree\report-designs\PTTGC\PermitToWork\cold_work.rptdesign
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.reporting.product C:\ProgramData\j5\generated_files\config-tree\report-designs\PTTGC\PermitToWork\cold_work.rptdesign
+
+!ENTRY org.eclipse.equinox.ds 2 0 2018-02-01 11:37:15.144
+!MESSAGE [SCR - WorkThread] Timeout occurred! Thread was blocked on processing [QueuedJob] WorkPerformer: org.eclipse.equinox.internal.ds.SCRManager@7b4995ae; actionType 1
+
+!ENTRY org.eclipse.equinox.ds 2 0 2018-02-01 11:37:15.203
+!MESSAGE [SCR] Enabling components of bundle org.eclipse.update.configurator did not complete in 30000 ms 

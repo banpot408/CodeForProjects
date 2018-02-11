@@ -1,0 +1,2432 @@
+version: "1.5"
+schema: "spreadsheet-form"
+---
+sections:
+-   title: "Contractors fill the information data and attach document for Work Permit"
+    edit_permissions:
+    -   rights_group: "contractor"
+        type: "rights_group"
+    -   rights_group: "job_owner"
+        type: "rights_group"
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "job_owner"
+        type: "rights_group"
+        allow_override: "ALL"
+    gates:
+        entry:
+        -   name: "Permit Request (1/4)"
+        submission:
+        -   name: "Permit Request (2/4)"
+    elements:
+        Label98:
+            type: "label"
+            value: "ใบอนุญาตทำงานที่มีประกายไฟ (Hot Work Permit)"
+            display_style: "SUBHEADING"
+        Label834:
+            type: "label"
+            value: "MOC No."
+            display_style: "SUBHEADING"
+        Text211:
+            type: "text"
+            display_style: "SUBHEADING"
+        Label1170:
+            type: "label"
+            value: "Permit No."
+            display_style: "SUBHEADING"
+        Permit_No:
+            type: "text"
+            value_source: "EXPRESSION"
+            display_style: "SUBHEADING"
+            can_override: false
+        Label101:
+            type: "label"
+            value: "ใบอนุญาตทำงานนี้สำหรับ (บริษัทผู้รับเหมา)"
+        Text2:
+            type: "text"
+        Label99:
+            type: "label"
+            value: "ผู้ขอใบอนุญาตทำงาน ชื่อ-สกุล"
+        HWRU_Name:
+            type: "text"
+            required: true
+        Label1122:
+            type: "label"
+            value: "อีเมล"
+        HWRU_Mail:
+            type: "text"
+            required: true
+        Label100:
+            type: "label"
+            value: "โทรศัพท์"
+        HWRU_Tel:
+            type: "text"
+            required: true
+        Label1208:
+            type: "label"
+            value: "หัวหน้างานที่จะเข้ามาทำงาน ชื่อ-สกุล"
+            display_style: null
+        Text276:
+            type: "text"
+            value: "=HWRU_Name"
+            value_source: "EXPRESSION"
+            required: true
+        Label1209:
+            type: "label"
+            value: "อีเมล"
+        Text277:
+            type: "text"
+            value: "=HWRU_Mail"
+            value_source: "EXPRESSION"
+        Label1210:
+            type: "label"
+            value: "โทรศัพท์"
+        Text278:
+            type: "text"
+            value: "=HWRU_Tel"
+            value_source: "EXPRESSION"
+        Label102:
+            type: "label"
+            value: "วันที่ขอเริ่มงาน"
+        DateTimeStart:
+            type: "datetime"
+        Label104:
+            type: "label"
+            value: "ถึงประมาณ"
+        DateTimeEnd:
+            type: "datetime"
+        Label105:
+            type: "label"
+            value: "จำนวนผู้ปฏิบัติงาน (คน)"
+        Integer1:
+            type: "integer"
+        Label107:
+            type: "label"
+            value: "พื้นที่ทำงาน"
+        area1:
+            type: "hierarchy-select"
+            value_source: "EXPRESSION"
+            can_override: false
+            options_source: "datastore"
+            datastore: "area_hierarchy"
+        Label837:
+            type: "label"
+            value: "สถานที่ทำงาน (ชื่อหน่วยการผลิต)"
+        Text220:
+            type: "text"
+        Label108:
+            type: "label"
+            value: "ชื่ออุปกรณ์ที่จะทำ"
+        Text3:
+            type: "text"
+        Label110:
+            type: "label"
+            value: "อุปกรณ์หมายเลข"
+        Text4:
+            type: "text"
+        Label111:
+            type: "label"
+            value: "รายละเอียดของงานและเครื่องมือ  อุปกรณ์ที่ใช้ทำงาน"
+        Text225:
+            type: "text"
+            input_style: "MULTI-LINE"
+        Label127:
+            type: "label"
+            value: "เอกสารอื่น ๆ ที่เกี่ยวข้อง"
+        Label591:
+            type: "label"
+            value: "การวิเคราะห์งานเพื่อความปลอดภัยและสิ่งแวดล้อม (JSEA)"
+        Text230:
+            type: "text"
+        Attachment3:
+            type: "attachment"
+        Label129:
+            type: "label"
+            value: "P&ID , เส้นทางเดินรถ"
+        Text221:
+            type: "text"
+        Attachment5:
+            type: "attachment"
+        Label130:
+            type: "label"
+            value: "ข้อมูลความปลอดภัยสารเคมี (SDS) (ระบุสารเคมี)"
+        Text16:
+            type: "text"
+        Attachment4:
+            type: "attachment"
+        Label131:
+            type: "label"
+            value: "อื่นๆ "
+        Text236:
+            type: "text"
+        Attachment6:
+            type: "attachment"
+        Label816:
+            type: "label"
+            value: "ลักษณะงาน"
+        Choice62:
+            type: "choice"
+            required: true
+            options:
+            - "Non - Open Flammable Job / Vehicle Entry"
+            - "Open Flammable Job"
+        Label316:
+            type: "label"
+            value: "หน่วยงาน PTTGC ที่ควบคุมงาน"
+        Choice65:
+            type: "choice"
+            required: true
+            options:
+            - "A-MN-A1"
+            - "A-MN-A2"
+            - "A-MN-CS"
+            - "A-P1-OP"
+            - "A-P1-TE"
+            - "A-MN-MP"
+            - "Q-SH-A1"
+            - "Q-SH-CM"
+            - "T-II-IP2"
+            - "TP-PP-PB"
+            - "H-GA-AD"
+            - "H-GA-BM"
+        Label1145:
+            type: "label"
+            value: "ชื่อ PTTGC Job Owner"
+        JON_Name:
+            type: "text"
+            required: true
+        Label1125:
+            type: "label"
+            value: "อีเมล"
+        JON_Mail:
+            type: "text"
+            required: true
+        Label1124:
+            type: "label"
+            value: "โทรศัพท์"
+        JON_Tel:
+            type: "text"
+            required: true
+    layout:
+    -   - "Label98"
+        - "-"
+        - "Label834"
+        - "Text211"
+        - "Label1170"
+        - "Permit_No"
+    -   - "Label101"
+        - "Text2"
+    -   - "Label99"
+        - "HWRU_Name"
+        - "Label1122"
+        - "HWRU_Mail"
+        - "Label100"
+        - "HWRU_Tel"
+    -   - "Label1208"
+        - "Text276"
+        - "Label1209"
+        - "Text277"
+        - "Label1210"
+        - "Text278"
+    -   - "Label102"
+        - "DateTimeStart"
+        - "Label104"
+        - "DateTimeEnd"
+    -   - "Label105"
+        - "Integer1"
+        - "Label107"
+        - "area1"
+        - "-"
+    -   - "Label837"
+        - "Text220"
+        - "Label108"
+        - "Text3"
+        - "Label110"
+        - "Text4"
+    -   - "Label111"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Text225"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "+"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label127"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label591"
+        - "Text230"
+        - "Attachment3"
+        - "Label129"
+        - "Text221"
+        - "Attachment5"
+    -   - "Label130"
+        - "Text16"
+        - "Attachment4"
+        - "Label131"
+        - "Text236"
+        - "Attachment6"
+    -   - "Label816"
+        - "Choice62"
+        - "-"
+    -   - "Label316"
+        - "Choice65"
+    -   - "Label1145"
+        - "JON_Name"
+        - "Label1125"
+        - "JON_Mail"
+        - "Label1124"
+        - "JON_Tel"
+-   title: "Countersign / Cosign for high-risk job"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    gates:
+        entry:
+        -   name: "Permit Request (3/4)"
+        submission:
+        -   name: "Permit Request (4/4)"
+    approvals:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+        allow_override: "ALL"
+    edit_permissions:
+    -   rights_group: "job_owner"
+        type: "rights_group"
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    elements:
+        Label1140:
+            type: "label"
+            value: "ใบอนุญาตทำงานจำเป็นต้อง มีการอนุมัติร่วม (Countersign/Cosigner) หรือไม่"
+        ChecklistItem146:
+            type: "checklist-item"
+            required: true
+            initial_value: "=NOTAPPLICABLE()"
+        Label1182:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label846:
+            type: "label"
+            value: "ชื่อ-สกุล (Countersign/Cosigner)"
+        Text250:
+            type: "text"
+            required: "=D17=TRUE"
+        Label822:
+            type: "label"
+            value: "อีเมล"
+        Text206:
+            type: "text"
+            required: "=D17=TRUE"
+        Label1143:
+            type: "label"
+            value: "โทรศัพท์"
+        Text260:
+            type: "text"
+            required: "=D17=TRUE"
+    layout:
+    -   - "Label1140"
+        - "-"
+        - "-"
+        - "ChecklistItem146"
+        - null
+        - "Label1182"
+    -   - "Label846"
+        - "Text250"
+        - "Label822"
+        - "Text206"
+        - "Label1143"
+        - "Text260"
+-   title: "Cosigner approval for Work Permit"
+    enabled:
+        if: "=D17=True"
+    visible_if: "=D17=True"
+    gates:
+        entry:
+        -   name: "Cosigner Approval (1/2)"
+        submission:
+        -   name: "Cosigner Approval (2/2)"
+    approvals:
+    -   rights_group: "co_sign"
+        type: "rights_group"
+        allow_override: "ALL"
+    edit_permissions:
+    -   rights_group: "co_sign"
+        type: "rights_group"
+    elements:
+        Label756:
+            type: "label"
+            value: "ผู้ร่วมออก / อนุมัติใบอนุญาต  Countersign/Cosigner ได้ตรวจสอบความถูกต้องแล้ว"
+        ChecklistItem148:
+            type: "checklist-item"
+            required: true
+        DateTime91:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Label1183:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+    layout:
+    -   - "Label756"
+        - "-"
+        - "ChecklistItem148"
+        - "DateTime91"
+        - null
+        - null
+        - "Label1183"
+-   title: "Permit Issuer preparation area"
+    gates:
+        entry:
+        -   name: "Permit Preparation (3/4)"
+        submission:
+        -   name: "Permit Preparation (4/4)"
+    approvals:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+        allow_override: "ALL"
+    edit_permissions:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    elements:
+        Label608:
+            type: "label"
+            value: "สภาพกระบวนการผลิตและการตัดแยกอุปกรณ์"
+        Label1184:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label135:
+            type: "label"
+            value: "สภาพของอุปกรณ์ที่ใช้งานครั้งสุดท้ายบรรจุด้วย"
+        Text22:
+            type: "text"
+        Label946:
+            type: "label"
+            value: "4. สภาพอุปกรณ์"
+        Checkbox17:
+            type: "checkbox"
+        Label136:
+            type: "label"
+            value: "ตัดแยกอุปกรณ์ ตาม TAG หมายเลข"
+        Text23:
+            type: "text"
+            required: "=A22=TRUE"
+        ChecklistItem125:
+            type: "checklist-item"
+        Label659:
+            type: "label"
+            value: "หยุดอุปกรณ์แล้ว"
+        Label137:
+            type: "label"
+            value: "รายละเอียดการตัดแยก"
+        Text24:
+            type: "text"
+            required: "=A22=TRUE"
+        ChecklistItem126:
+            type: "checklist-item"
+        Label660:
+            type: "label"
+            value: "ปล่อยความดันออกหมดแล้ว"
+        Checkbox18:
+            type: "checkbox"
+        Label138:
+            type: "label"
+            value: "Isolation plan / EIC No."
+        Text25:
+            type: "text"
+            required: "=A24=TRUE"
+        ChecklistItem127:
+            type: "checklist-item"
+        Label661:
+            type: "label"
+            value: "ปล่อยของเหลวออกหมดแล้ว"
+        ChecklistItem128:
+            type: "checklist-item"
+        Label662:
+            type: "label"
+            value: "อาจมีของเหลวตกค้าง"
+        Label142:
+            type: "label"
+            value: "ตัดแยกระบบไฟฟ้า (ระบุ TAG หมายเลข)"
+        ChecklistItem129:
+            type: "checklist-item"
+        Label663:
+            type: "label"
+            value: "อาจมีความดันตกค้าง"
+        Checkbox19:
+            type: "checkbox"
+        Label143:
+            type: "label"
+            value: "Local switch"
+        Text26:
+            type: "text"
+            required: "=A27=TRUE"
+        ChecklistItem130:
+            type: "checklist-item"
+        Label664:
+            type: "label"
+            value: "ท่อ อุปกรณ์ได้ตัดแยกแล้ว"
+        Checkbox20:
+            type: "checkbox"
+        Label144:
+            type: "label"
+            value: "Breaker"
+            display_style: null
+        Text27:
+            type: "text"
+            required: "=A28=TRUE"
+        ChecklistItem131:
+            type: "checklist-item"
+        Label665:
+            type: "label"
+            value: "อุปกรณ์ผ่านการทำความสะอาดแล้ว"
+        Label145:
+            type: "label"
+            value: "อื่นๆ "
+        Text191:
+            type: "text"
+        ChecklistItem132:
+            type: "checklist-item"
+        Label666:
+            type: "label"
+            value: "ถอดท่อ หรือข้อต่อออกแล้ว"
+        Label146:
+            type: "label"
+            value: "รายละเอียดการตัดแยก"
+        Text243:
+            type: "text"
+        ChecklistItem133:
+            type: "checklist-item"
+        Label667:
+            type: "label"
+            value: "ผ่านการทำความสะอาดด้วยไนโตรเจนแล้ว"
+        Checkbox21:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=A32=TRUE"
+                message: "Error"
+            required: "=A32=FALSE"
+        Label147:
+            type: "label"
+            value: "แนบแบบแปลนไฟฟ้า"
+        ChecklistItem134:
+            type: "checklist-item"
+        Label668:
+            type: "label"
+            value: "ผ่านการทำความสะอาดด้วยไอน้ำแล้ว"
+        Checkbox22:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=A31=TRUE"
+                message: "Error"
+            required: "=A31=FALSE"
+        Label148:
+            type: "label"
+            value: "ไม่แนบแบบแปลนไฟฟ้า"
+        ChecklistItem135:
+            type: "checklist-item"
+        Label669:
+            type: "label"
+            value: "ผ่านการทำความสะอาดด้วยน้ำแล้ว"
+        ChecklistItem136:
+            type: "checklist-item"
+        Label670:
+            type: "label"
+            value: "อุปกรณ์ไฟฟ้าได้ทำการตัดแยกครบถ้วนแล้ว"
+        Label150:
+            type: "label"
+            value: "ตัดแยกระบบเครื่องมือวัด เครื่องมือควบคุม"
+        ChecklistItem137:
+            type: "checklist-item"
+        Label671:
+            type: "label"
+            value: "อื่นๆ (ระบุ)"
+        Checkbox23:
+            type: "checkbox"
+        Label151:
+            type: "label"
+            value: "Override"
+        Text30:
+            type: "text"
+            required: "=A35=TRUE"
+        Text192:
+            type: "text"
+            invalid_if:
+            -   op: "="
+            required: "=F34=True"
+        Checkbox26:
+            type: "checkbox"
+        Label154:
+            type: "label"
+            value: "By Pass Control Valve"
+        Text31:
+            type: "text"
+            required: "=A36=TRUE"
+        Label672:
+            type: "label"
+            value: "ให้ On-Site Verifier ตรวจสอบและลงนามก่อนเริ่มงาน"
+        ChecklistItem138:
+            type: "checklist-item"
+            required: true
+        Checkbox24:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=A38=TRUE"
+                message: "Error"
+        Label152:
+            type: "label"
+            value: "แนบ Logic Control Diagram"
+        Label673:
+            type: "label"
+            value: "ติดต่อ/แจ้ง On-Site Verifier ก่อนเริ่มงาน (ระบุชื่อ)"
+        Text222:
+            type: "text"
+            invalid_if:
+            -   op: "="
+            required: "=G36=TRUE"
+        Checkbox25:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=A37=TRUE"
+        Label153:
+            type: "label"
+            value: "ไม่แนบ Logic Control Diagram"
+        Label606:
+            type: "label"
+            value: "ข้อควรปฏิบัติ ข้อควรระวัง"
+        Text194:
+            type: "text"
+        Label173:
+            type: "label"
+            value: "ข้อกำหนดความปลอดภัย"
+        Checkbox27:
+            type: "checkbox"
+        Label174:
+            type: "label"
+            value: "ปิดกั้นบริเวณทำงาน"
+        Checkbox35:
+            type: "checkbox"
+        Label182:
+            type: "label"
+            value: "เจาะท่อเพื่อตรวจวัดก๊าซ"
+        Checkbox28:
+            type: "checkbox"
+        Label175:
+            type: "label"
+            value: "ปิดครอบรางระบายในรัศมี 15 เมตร"
+        Checkbox37:
+            type: "checkbox"
+        Label184:
+            type: "label"
+            value: "ต่อสายฉีดพ่นไอน้ำพร้อมใช้งาน"
+        Checkbox29:
+            type: "checkbox"
+        Label176:
+            type: "label"
+            value: "เตรียมเครื่องระบายอากาศ (งานในที่อับอากาศ)"
+        Checkbox38:
+            type: "checkbox"
+        Label185:
+            type: "label"
+            value: "จัดป้ายเตือนภัย/ไฟเตือนภัย"
+        Checkbox30:
+            type: "checkbox"
+        Label177:
+            type: "label"
+            value: "ฉีดน้ำในกรณีที่มีการถอดแผ่นกั้นละออง"
+        Checkbox39:
+            type: "checkbox"
+            value: "TRUE"
+            value_source: "EXPRESSION"
+            can_override: false
+        Label186:
+            type: "label"
+            value: "หยุดทำงานเมื่อตรวจพบสารไฮโดรคาร์บอนรั่ว"
+        Checkbox31:
+            type: "checkbox"
+        Label178:
+            type: "label"
+            value: "ปิดกั้นประกายไฟ/ล้อมผ้ากันไฟ"
+        Checkbox40:
+            type: "checkbox"
+            value: "TRUE"
+            value_source: "EXPRESSION"
+            can_override: false
+        Label187:
+            type: "label"
+            value: "ไม่ปล่อยของเหลวไม่ระบายความดัน หรือเก็บตัวอย่างในพื้นที่ที่กำลังทำงาน"
+        Checkbox32:
+            type: "checkbox"
+        Label179:
+            type: "label"
+            value: "มีถังดับเพลิงที่บริเวณทำงาน"
+        Checkbox41:
+            type: "checkbox"
+            value: "TRUE"
+            value_source: "EXPRESSION"
+            can_override: false
+        Label188:
+            type: "label"
+            value: "สื่อสาร ทำความเข้าใจรายละเอียด Work permit ให้กับทีมงานก่อนเริ่มงาน"
+        Checkbox33:
+            type: "checkbox"
+        Label180:
+            type: "label"
+            value: "ต่อสายดับเพลิง Standby"
+        Checkbox42:
+            type: "checkbox"
+        Label189:
+            type: "label"
+            value: "มีสารที่ลุกติดไฟได้เอง (Pyrophoric) ต้องแช่หรือฉีดน้ำ"
+        Checkbox34:
+            type: "checkbox"
+        Label181:
+            type: "label"
+            value: "ตรวจสอบ Eye washer ให้พร้อมใช้งาน"
+        Checkbox43:
+            type: "checkbox"
+        Label190:
+            type: "label"
+            value: "ระวังกระแทกวาล์วหรืออุปกรณ์ข้างเคียง เช่น Protection wire, Latch valve"
+        Checkbox36:
+            type: "checkbox"
+        Label183:
+            type: "label"
+            value: "มีอุปกรณ์วัดแก๊สส่วนบุคคล (ระบุ)"
+        Checkbox44:
+            type: "checkbox"
+        Label191:
+            type: "label"
+            value: "อื่นๆ"
+        Text33:
+            type: "text"
+            required: "=A48=True"
+        Text34:
+            type: "text"
+            required: "=E48=True"
+        Label192:
+            type: "label"
+            value: "ข้อควรระวังเพิ่มเติม"
+        Text196:
+            type: "text"
+        Label268:
+            type: "label"
+            value: "อุปกรณ์ป้องกันอันตรายส่วนบุคคลที่ต้องการใช้"
+        Checkbox50:
+            type: "checkbox"
+            value: "TRUE"
+            value_source: "EXPRESSION"
+            can_override: false
+        Label269:
+            type: "label"
+            value: "อุปกรณ์ PPE มาตรฐาน (หมวกนิรภัย,รองเท้านิรภัย,แว่นตานิรภัย)"
+        Checkbox55:
+            type: "checkbox"
+        Label274:
+            type: "label"
+            value: "Full Body Harness"
+        Checkbox51:
+            type: "checkbox"
+        Label271:
+            type: "label"
+            value: "หน้ากากกรองสารเคมี"
+        Checkbox56:
+            type: "checkbox"
+        Label275:
+            type: "label"
+            value: "ชุดป้องกันฝุ่นละออง"
+        Checkbox52:
+            type: "checkbox"
+        Label272:
+            type: "label"
+            value: "Ears plug / muff"
+        Checkbox57:
+            type: "checkbox"
+        Label276:
+            type: "label"
+            value: "ชุดป้องกันสารเคมี"
+        Checkbox53:
+            type: "checkbox"
+        Label273:
+            type: "label"
+            value: "ถุงมือ"
+        Checkbox58:
+            type: "checkbox"
+        Label277:
+            type: "label"
+            value: "อื่นๆ (ระบุ)"
+        Checkbox54:
+            type: "checkbox"
+        Label270:
+            type: "label"
+            value: "แว่นครอบตานิรภัย"
+        Text41:
+            type: "text"
+            required: "=E55=TRUE"
+        Label389:
+            type: "label"
+            value: "ผลการตรวจวัดก๊าซก่อนเริ่มทำงาน"
+        Label734:
+            type: "label"
+            value: "วันที่/เวลา"
+        Label735:
+            type: "label"
+            value: "%LEL"
+        Label736:
+            type: "label"
+            value: "%O₂"
+        Label737:
+            type: "label"
+            value: "H₂S"
+        Label738:
+            type: "label"
+            value: "CO"
+        Choice57:
+            type: "choice"
+            test_value: "อื่นๆ"
+            can_override: false
+            options:
+            - "Benzene"
+            - "Toluene"
+            - "Xylene"
+            - "Mereury"
+        Label844:
+            type: "label"
+            value: "AGT (ชื่อผู้ตรวจวัด)"
+        Label746:
+            type: "label"
+            value: "ความถี่ในการวัด (ชั่วโมง)"
+        Number184:
+            type: "text"
+            required: true
+            initial_value: "4"
+        Number185:
+            type: "text"
+            required: true
+            initial_value: "4"
+        Number186:
+            type: "text"
+            required: true
+            initial_value: "N/A"
+        Number187:
+            type: "text"
+            required: true
+            initial_value: "N/A"
+        Number188:
+            type: "text"
+            initial_value: "N/A"
+        DateTime87:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Integer19:
+            type: "text"
+            required: true
+            initial_value: "0"
+        Integer20:
+            type: "text"
+            required: true
+            initial_value: "20.9"
+        Integer21:
+            type: "text"
+            required: true
+            initial_value: "-"
+        Integer22:
+            type: "text"
+            required: true
+            initial_value: "-"
+        Integer23:
+            type: "text"
+            initial_value: "-"
+        Text215:
+            type: "text"
+            value: "=Text222"
+            value_source: "EXPRESSION"
+            required: true
+        Label739:
+            type: "label"
+            value: "ค่ามาตรฐาน"
+        Label740:
+            type: "label"
+            value: "0 % LEL"
+        Label741:
+            type: "label"
+            value: "19.5 - 23.5 %"
+        Label742:
+            type: "label"
+            value: "5 ppm"
+        Label743:
+            type: "label"
+            value: "25 ppm"
+        Text203:
+            type: "text"
+            value: "=IF(F58=\"Benzene\",\"1 ppm\",IF(F58=\"Toluene\",\"200 ppm\",IF(F58=\"Xylene\",\"100 ppm\",IF(F58=\"Mereury\",\"0.05mg/m³\",\"NA\"))))"
+            value_source: "EXPRESSION"
+            can_override: false
+    layout:
+    -   - "Label608"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1184"
+    -   - "Label135"
+        - "-"
+        - "Text22"
+        - null
+        - null
+        - "Label946"
+        - "-"
+    -   - "Checkbox17"
+        - "Label136"
+        - "Text23"
+        - null
+        - null
+        - "ChecklistItem125"
+        - "Label659"
+    -   - "Label137"
+        - "Text24"
+        - "-"
+        - null
+        - null
+        - "ChecklistItem126"
+        - "Label660"
+    -   - "Checkbox18"
+        - "Label138"
+        - "Text25"
+        - null
+        - null
+        - "ChecklistItem127"
+        - "Label661"
+    -   - null
+        - null
+        - null
+        - null
+        - null
+        - "ChecklistItem128"
+        - "Label662"
+    -   - "Label142"
+        - "-"
+        - "-"
+        - null
+        - null
+        - "ChecklistItem129"
+        - "Label663"
+    -   - "Checkbox19"
+        - "Label143"
+        - "Text26"
+        - null
+        - null
+        - "ChecklistItem130"
+        - "Label664"
+    -   - "Checkbox20"
+        - "Label144"
+        - "Text27"
+        - null
+        - null
+        - "ChecklistItem131"
+        - "Label665"
+    -   - "Label145"
+        - "Text191"
+        - "-"
+        - null
+        - null
+        - "ChecklistItem132"
+        - "Label666"
+    -   - "Label146"
+        - "Text243"
+        - "-"
+        - null
+        - null
+        - "ChecklistItem133"
+        - "Label667"
+    -   - "Checkbox21"
+        - "Label147"
+        - "-"
+        - null
+        - null
+        - "ChecklistItem134"
+        - "Label668"
+    -   - "Checkbox22"
+        - "Label148"
+        - "-"
+        - null
+        - null
+        - "ChecklistItem135"
+        - "Label669"
+    -   - null
+        - null
+        - null
+        - null
+        - null
+        - "ChecklistItem136"
+        - "Label670"
+    -   - "Label150"
+        - "-"
+        - "-"
+        - null
+        - null
+        - "ChecklistItem137"
+        - "Label671"
+    -   - "Checkbox23"
+        - "Label151"
+        - "Text30"
+        - null
+        - null
+        - "Text192"
+        - "-"
+    -   - "Checkbox26"
+        - "Label154"
+        - "Text31"
+        - null
+        - null
+        - "Label672"
+        - "ChecklistItem138"
+    -   - "Checkbox24"
+        - "Label152"
+        - "-"
+        - null
+        - null
+        - "Label673"
+        - "Text222"
+    -   - "Checkbox25"
+        - "Label153"
+        - "-"
+        - null
+        - null
+        - "Label606"
+        - "Text194"
+    -   - "Label173"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Checkbox27"
+        - "Label174"
+        - "-"
+        - null
+        - "Checkbox35"
+        - "Label182"
+        - "-"
+    -   - "Checkbox28"
+        - "Label175"
+        - "-"
+        - null
+        - "Checkbox37"
+        - "Label184"
+        - "-"
+    -   - "Checkbox29"
+        - "Label176"
+        - "-"
+        - null
+        - "Checkbox38"
+        - "Label185"
+        - "-"
+    -   - "Checkbox30"
+        - "Label177"
+        - "-"
+        - null
+        - "Checkbox39"
+        - "Label186"
+        - "-"
+    -   - "Checkbox31"
+        - "Label178"
+        - "-"
+        - null
+        - "Checkbox40"
+        - "Label187"
+        - "-"
+    -   - "Checkbox32"
+        - "Label179"
+        - "-"
+        - null
+        - "Checkbox41"
+        - "Label188"
+        - "-"
+    -   - "Checkbox33"
+        - "Label180"
+        - "-"
+        - null
+        - "Checkbox42"
+        - "Label189"
+        - "-"
+    -   - "Checkbox34"
+        - "Label181"
+        - "-"
+        - null
+        - "Checkbox43"
+        - "Label190"
+        - "-"
+    -   - "Checkbox36"
+        - "Label183"
+        - "-"
+        - null
+        - "Checkbox44"
+        - "Label191"
+        - "-"
+    -   - null
+        - "Text33"
+        - "-"
+        - null
+        - null
+        - "Text34"
+        - "-"
+    -   - "Label192"
+        - "Text196"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label268"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Checkbox50"
+        - "Label269"
+        - "-"
+        - null
+        - "Checkbox55"
+        - "Label274"
+        - "-"
+    -   - "Checkbox51"
+        - "Label271"
+        - "-"
+        - null
+        - "Checkbox56"
+        - "Label275"
+        - "-"
+    -   - "Checkbox52"
+        - "Label272"
+        - "-"
+        - null
+        - "Checkbox57"
+        - "Label276"
+        - "-"
+    -   - "Checkbox53"
+        - "Label273"
+        - "-"
+        - null
+        - "Checkbox58"
+        - "Label277"
+        - "-"
+    -   - "Checkbox54"
+        - "Label270"
+        - "-"
+        - null
+        - null
+        - "Text41"
+        - "-"
+    -   - "Label389"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label734"
+        - "Label735"
+        - "Label736"
+        - "Label737"
+        - "Label738"
+        - "Choice57"
+        - "Label844"
+    -   - "Label746"
+        - "Number184"
+        - "Number185"
+        - "Number186"
+        - "Number187"
+        - "Number188"
+        - "+"
+    -   - "DateTime87"
+        - "Integer19"
+        - "Integer20"
+        - "Integer21"
+        - "Integer22"
+        - "Integer23"
+        - "Text215"
+    -   - "Label739"
+        - "Label740"
+        - "Label741"
+        - "Label742"
+        - "Label743"
+        - "Text203"
+-   edit_permissions:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    title: "Work Permit Approval (Non-Open Flammable)"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+        if: "=B14=\"Non - Open Flammable Job / Vehicle Entry\""
+    approvals:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+        allow_override: "ALL"
+    visible_if: "=B14=\"Non - Open Flammable Job / Vehicle Entry\""
+    gates:
+        entry:
+        -   name: "Permit Non-Open Flammable Approval (1/4)"
+        submission:
+        -   name: "Permit Non-Open Flammable Approval (2/4)"
+        final:
+        -   name: "Cancel Permit"
+            condition: "=ChecklistItem154=TRUE"
+    elements:
+        Label641:
+            type: "label"
+            value: "หัวหน้างาน (Supervisor , Foreman , Leadman)  ได้ทำความเข้าใจสิ่งที่ต้องระวังในการปฏิบัติงานครั้งนี้  และได้อธิบายให้ผู้ปฏิบัติงานทราบและถือปฏิบัติอย่างเคร่งครัด"
+        Label1185:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label642:
+            type: "label"
+            value: "ชื่อหัวหน้างาน"
+        Text228:
+            type: "text"
+            value: "=Text276"
+            value_source: "EXPRESSION"
+            required: true
+        DateTime101:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Label643:
+            type: "label"
+            value: "On-site  verifier  ได้ทำการตรวจสอบสภาพพื้นที่การทำงานที่ได้ร้องขอ  และยืนยันผล Gas  test  ร่วมกับ  Authorized gas  test เรียบร้อยแล้ว"
+        Label644:
+            type: "label"
+            value: "ผู้ตรวจสอบหน้างาน  (On-site verifier)"
+        Label748:
+            type: "text"
+            value: "=Text222"
+            value_source: "EXPRESSION"
+        Label645:
+            type: "label"
+            value: " (เป็นผู้ตรวจสอบหน้างานและลงนามคนสุดท้ายก่อนให้เริ่มทำงาน)"
+        Label750:
+            type: "label"
+            value: "ผู้อนุมัติใบอนุญาตทำงาน Permit Approver ได้สื่อสารกับหัวหน้างานแล้ว"
+        Checkbox66:
+            type: "checklist-item"
+            required: true
+            initial_value: "=FALSE"
+        DateTime89:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Label625:
+            type: "label"
+            value: "(ใบอนุญาตทำงานสามารถใช้งานได้ตลอดกะ หรือเวลาการปฏิบัติงานปกติและสามารถขอต่ออายุใช้งานได้ไม่เกิน 12 ชั่วโมง)"
+        Label1214:
+            type: "label"
+            value: "Job Owner/หัวหน้างาน ต้องการยกเลิกอายุใบอนุญาตทำงาน"
+            display_style: "SUBHEADING"
+        Label1197:
+            type: "label"
+            value: "Job Owner/หัวหน้างาน ต้องการยกเลิกอายุใบอนุญาตทำงาน"
+        ChecklistItem154:
+            type: "checklist-item"
+            required: true
+            initial_value: "=FALSE"
+        Label1198:
+            type: "label"
+            value: "ระบุเหตุผล"
+        Text274:
+            type: "text"
+            required: "=ChecklistItem154=TRUE"
+    layout:
+    -   - "Label641"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1185"
+    -   - "Label642"
+        - "-"
+        - "Text228"
+        - "DateTime101"
+    -   - "Label643"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label644"
+        - "-"
+        - "Label748"
+        - "Label645"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label750"
+        - "-"
+        - "Checkbox66"
+        - "DateTime89"
+    -   - "Label625"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label1214"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label1197"
+        - "-"
+        - "ChecklistItem154"
+        - "Label1198"
+        - "Text274"
+        - "-"
+        - "-"
+-   visible_if: "=B14=\"Open Flammable Job\""
+    enabled:
+        if: "=B14=\"Open Flammable Job\""
+        after: "ALL_PREVIOUS_SECTIONS"
+    edit_permissions:
+    -   rights_group: "shift_manager"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "shift_manager"
+        type: "rights_group"
+        allow_override: "ALL"
+    title: "Work Permit Approval (Open Flammable)"
+    gates:
+        entry:
+        -   name: "Permit Open Flammable Approval (1/4)"
+        submission:
+        -   name: "Permit Open Flammable Approval (2/4)"
+        final:
+        -   name: "Cancel Permit"
+            condition: "=ChecklistItem155=TRUE"
+    elements:
+        Label763:
+            type: "label"
+            value: "หัวหน้างาน (Supervisor , Foreman , Leadman)  ได้ทำความเข้าใจสิ่งที่ต้องระวังในการปฏิบัติงานครั้งนี้  และได้อธิบายให้ผู้ปฏิบัติงานทราบและถือปฏิบัติอย่างเคร่งครัด"
+        Label1199:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label764:
+            type: "label"
+            value: "ชื่อหัวหน้างาน"
+        Text238:
+            type: "text"
+            value: "=Text276"
+            value_source: "EXPRESSION"
+            required: true
+        DateTime102:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Label766:
+            type: "label"
+            value: "On-site verifier ได้ทำการตรวจสอบสภาพพื้นที่การทำงานที่ได้ร้องขอและยืนยันผล Gas  Test ร่วมกับ Authorized Gas Test เรียบร้อยแล้ว"
+        Label767:
+            type: "label"
+            value: "ผู้ตรวจสอบหน้างาน  (On-site verifier)"
+        Label768:
+            type: "text"
+            value: "=Text222"
+            value_source: "EXPRESSION"
+        Label769:
+            type: "label"
+            value: " (เป็นผู้ตรวจสอบหน้างานและลงนามคนสุดท้ายก่อนให้เริ่มทำงาน)"
+        Label770:
+            type: "label"
+            value: "ผู้อนุมัติใบอนุญาตทำงาน  Permit Approver ได้สื่อสารกับหัวหน้างานแล้ว"
+        Checkbox69:
+            type: "checklist-item"
+            required: true
+            initial_value: "=FALSE"
+        DateTime92:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Label755:
+            type: "label"
+            value: "(ใบอนุญาตทำงานสามารถใช้งานได้ตลอดกะ หรือเวลาการปฏิบัติงานปกติและสามารถขอต่ออายุใช้งานได้ไม่เกิน 12 ชั่วโมง)"
+        Label1215:
+            type: "label"
+            value: "Job Owner/หัวหน้างาน ต้องการยกเลิกอายุใบอนุญาตทำงาน"
+            display_style: null
+        Label1200:
+            type: "label"
+            value: "Job Owner/หัวหน้างาน ต้องการยกเลิกอายุใบอนุญาตทำงาน"
+            display_style: null
+        ChecklistItem155:
+            type: "checklist-item"
+            required: true
+            initial_value: "=FALSE"
+        Label1201:
+            type: "label"
+            value: "ระบุเหตุผล"
+        Text275:
+            type: "text"
+            required: "=ChecklistItem154=TRUE"
+    layout:
+    -   - "Label763"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1199"
+    -   - "Label764"
+        - "-"
+        - "Text238"
+        - "DateTime102"
+    -   - "Label766"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label767"
+        - "-"
+        - "Label768"
+        - "Label769"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label770"
+        - "-"
+        - "Checkbox69"
+        - "DateTime92"
+    -   - "Label755"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label1215"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label1200"
+        - "-"
+        - "ChecklistItem155"
+        - "Label1201"
+        - "Text275"
+        - "-"
+        - "-"
+-   enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    title: "Gas test while working"
+    edit_permissions:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    -   rights_group: "onsite_verifier"
+        type: "rights_group"
+    gates:
+        entry:
+        -   name: "Working"
+        submission:
+        -   name: "Gas Test (While working)"
+        final:
+        -   name: "Cancel Permit"
+            condition: "=ChecklistItem156=TRUE"
+    approvals:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+        allow_override: "ALL"
+    elements:
+        Label407:
+            type: "label"
+            value: "ผลการตรวจวัดก๊าซ ขณะทำงาน"
+        Label1189:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label677:
+            type: "label"
+            value: "วันที่/เวลา"
+        Label678:
+            type: "label"
+            value: "%LEL"
+        Label679:
+            type: "label"
+            value: "%O₂"
+        Label680:
+            type: "label"
+            value: "H₂S"
+        Label681:
+            type: "label"
+            value: "CO"
+        Label814:
+            type: "label"
+            value: "=Choice57"
+        Label845:
+            type: "label"
+            value: "AGT (ชื่อผู้ตรวจวัด)"
+        Label838:
+            type: "label"
+            value: "ความถี่ในการวัด (ชั่วโมง)"
+        Label839:
+            type: "label"
+            value: "=Number184"
+        Label840:
+            type: "label"
+            value: "=Number185"
+        Label841:
+            type: "label"
+            value: "=Number186"
+        Label842:
+            type: "label"
+            value: "=Number187"
+        Label843:
+            type: "label"
+            value: "=Number188"
+        DateTime79:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Integer2:
+            type: "text"
+            required: true
+            initial_value: "0"
+        Integer7:
+            type: "text"
+            required: true
+            initial_value: "20.9"
+        Integer17:
+            type: "text"
+            required: true
+            initial_value: "-"
+        Integer18:
+            type: "text"
+            required: true
+            initial_value: "-"
+        Integer28:
+            type: "text"
+            initial_value: "-"
+        Text216:
+            type: "text"
+            value: "=Text215"
+            value_source: "EXPRESSION"
+            required: true
+        DateTime100:
+            type: "datetime"
+        Integer24:
+            type: "text"
+        Integer25:
+            type: "text"
+        Integer26:
+            type: "text"
+        Integer27:
+            type: "text"
+        Integer29:
+            type: "text"
+        Text223:
+            type: "text"
+        Label683:
+            type: "label"
+            value: "ค่ามาตรฐาน"
+        Label688:
+            type: "label"
+            value: "0 % LEL"
+        Label687:
+            type: "label"
+            value: "19.5 - 23.5 %"
+        Label686:
+            type: "label"
+            value: "5 ppm"
+        Label685:
+            type: "label"
+            value: "25 ppm"
+        Label684:
+            type: "label"
+            value: "=Text203"
+        Label1023:
+            type: "label"
+        Label1211:
+            type: "label"
+            value: "Job Owner/หัวหน้างาน ต้องการยกเลิกอายุใบอนุญาตทำงาน"
+            display_style: null
+        Label1212:
+            type: "label"
+            value: "Job Owner/หัวหน้างาน ต้องการยกเลิกอายุใบอนุญาตทำงาน (หากต้องการยกเลิกต้องระบุเหตุผล)"
+            display_style: null
+        ChecklistItem156:
+            type: "checklist-item"
+            required: true
+            initial_value: "=FALSE"
+        Label1213:
+            type: "label"
+            value: "ระบุเหตุผล"
+        Text285:
+            type: "text"
+            required: "=ChecklistItem153=TRUE"
+    layout:
+    -   - "Label407"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1189"
+    -   - "Label677"
+        - "Label678"
+        - "Label679"
+        - "Label680"
+        - "Label681"
+        - "Label814"
+        - "Label845"
+    -   - "Label838"
+        - "Label839"
+        - "Label840"
+        - "Label841"
+        - "Label842"
+        - "Label843"
+        - "+"
+    -   - "DateTime79"
+        - "Integer2"
+        - "Integer7"
+        - "Integer17"
+        - "Integer18"
+        - "Integer28"
+        - "Text216"
+    -   - "DateTime100"
+        - "Integer24"
+        - "Integer25"
+        - "Integer26"
+        - "Integer27"
+        - "Integer29"
+        - "Text223"
+    -   - "Label683"
+        - "Label688"
+        - "Label687"
+        - "Label686"
+        - "Label685"
+        - "Label684"
+        - "Label1023"
+    -   - "Label1211"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label1212"
+        - "-"
+        - "ChecklistItem156"
+        - "Label1213"
+        - "Text285"
+        - "-"
+        - "-"
+-   title: "Renewal of Perrmit Request"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    edit_permissions:
+    -   rights_group: "job_owner"
+        type: "rights_group"
+    -   rights_group: "onsite_verifier"
+        type: "rights_group"
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+        allow_override: "ALL"
+    gates:
+        entry:
+        -   name: "Renewal of Permit (1/4)"
+        submission:
+        -   name: "Renewal of Permit (2/4)"
+        final:
+        -   name: "Cancel Permit"
+            condition: "=ChecklistItem153=TRUE"
+    elements:
+        Label1179:
+            type: "label"
+            value: "Job Owner ต้องการต่ออายุใบอนุญาต"
+            display_style: "SUBHEADING"
+        Label1186:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label588:
+            type: "label"
+            value: "Job Owner ต้องการต่ออายุใบอนญาต (สามารถขอต่ออายุใช้งานได้ไม่เกิน 12 ชั่วโมง)"
+            display_style: "SUBHEADING"
+        ChecklistItem140:
+            type: "checklist-item"
+            required: true
+            initial_value: "=FALSE"
+        Label1203:
+            type: "label"
+            value: "Job Owner/หัวหน้างาน ต้องการยกเลิกอายุใบอนุญาตทำงาน"
+            display_style: null
+        Label1202:
+            type: "label"
+            value: "Job Owner/หัวหน้างาน ต้องการยกเลิกอายุใบอนุญาตทำงาน (หากต้องการยกเลิกต้องระบุเหตุผล)"
+            display_style: null
+        ChecklistItem153:
+            type: "checklist-item"
+            required: true
+            initial_value: "=FALSE"
+        Label1190:
+            type: "label"
+            value: "ระบุเหตุผล"
+        Text273:
+            type: "text"
+            required: "=ChecklistItem153=TRUE"
+    layout:
+    -   - "Label1179"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1186"
+    -   - "Label588"
+        - "-"
+        - "ChecklistItem140"
+    -   - "Label1203"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label1202"
+        - "-"
+        - "ChecklistItem153"
+        - "Label1190"
+        - "Text273"
+        - "-"
+        - "-"
+-   edit_permissions:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    -   rights_group: "onsite_verifier"
+        type: "rights_group"
+    -   rights_group: "job_owner"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+        allow_override: "ALL"
+    title: "Renewal of Perrmit (Non-Open Flammable)"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+        if: "=AND(C87=True,B14=\"Non - Open Flammable Job / Vehicle Entry\")"
+    visible_if: "=AND(C87=True,B14=\"Non - Open Flammable Job / Vehicle Entry\")"
+    gates:
+        entry:
+        -   name: "Renewal of Permit Non-Open Flammable (3/4)"
+        submission:
+        -   name: "Renewal of Permit Non-Open Flammable (4/4)"
+    elements:
+        Label288:
+            type: "label"
+            value: "การต่ออายุใบอนุญาตทำงาน อายุใบอนุญาตทำงานจะสิ้นสุดลงไม่เกิน 12 ชั่วโมง สามารถต่ออายุใบอนุญาตทำงานได้ไม่เกิน 24 ชั่วโมง (ยกเว้นกรณี Turnaround)"
+        Label1191:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label289:
+            type: "label"
+            value: "ผู้อนุมัติใบอนุญาต ได้ตรวจสอบสภาพพื้นที่ กระบวนการผลิตและอุปกรณ์ที่หน้างานแล้วว่าความปลอดภัยเพียงพอ และได้รับการตรวจวัดก๊าซพร้อมทั้งได้บันทึกผลการตรวจสอบไว้แล้ว"
+        Label590:
+            type: "label"
+            value: "ขอต่ออายุใบอนุญาตทำงานตั้งแต่เวลา"
+        DateTime35:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Label1204:
+            type: "label"
+            value: "ถึงเวลา"
+        DateTime113:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()+0.25"
+        Label1126:
+            type: "label"
+            value: "On-Site Verifier ที่ดูแลใน Shift ถัดไป (ชื่อ-สกุล)"
+        Text207:
+            type: "text"
+            required: true
+        Label1128:
+            type: "label"
+            value: "โทรศัพท์"
+        Text253:
+            type: "text"
+            required: true
+        Label776:
+            type: "label"
+            value: "หัวหน้างาน รับทราบการต่ออายุใบอนุญาตทำงาน (ชื่อหัวหน้างาน)"
+        Text259:
+            type: "text"
+            value: "=Text276"
+            value_source: "EXPRESSION"
+        Label1205:
+            type: "label"
+            value: "เวลา"
+        DateTime96:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+    layout:
+    -   - "Label288"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1191"
+    -   - "Label289"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label590"
+        - "-"
+        - "DateTime35"
+        - "Label1204"
+        - "DateTime113"
+    -   - "Label1126"
+        - "-"
+        - "Text207"
+        - "Label1128"
+        - "Text253"
+    -   - "Label776"
+        - "-"
+        - "Text259"
+        - "Label1205"
+        - "DateTime96"
+-   edit_permissions:
+    -   rights_group: "onsite_verifier"
+        type: "rights_group"
+    -   rights_group: "job_owner"
+        type: "rights_group"
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "shift_manager"
+        type: "rights_group"
+        allow_override: "ALL"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+        if: "=AND(C87=True,B14=\"Open Flammable Job\")"
+    title: "Renewal of Perrmit (Open Flammable)"
+    visible_if: "=AND(C87=True,B14=\"Open Flammable Job\")"
+    gates:
+        entry:
+        -   name: "Renewal of Permit Open Flammable (3/4)"
+        submission:
+        -   name: "Renewal of Permit Open Flammable (4/4)"
+    elements:
+        Label772:
+            type: "label"
+            value: "การต่ออายุใบอนุญาตทำงาน อายุใบอนุญาตทำงานจะสิ้นสุดลงไม่เกิน 12 ชั่วโมง สามารถต่ออายุใบอนุญาตทำงานได้ไม่เกิน 24 ชั่วโมง (ยกเว้นกรณี Turnaround)"
+        Label1192:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label773:
+            type: "label"
+            value: "ผู้อนุมัติใบอนุญาต ได้ตรวจสอบสภาพพื้นที่ กระบวนการผลิตและอุปกรณ์ที่หน้างานแล้วว่าความปลอดภัยเพียงพอ และได้รับการตรวจวัดก๊าซพร้อมทั้งได้บันทึกผลการตรวจสอบไว้แล้ว"
+        Label774:
+            type: "label"
+            value: "ขอต่ออายุใบอนุญาตทำงาน"
+        DateTime97:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Label1207:
+            type: "label"
+            value: "ถึงเวลา"
+        DateTime114:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()+0.25"
+        Label1129:
+            type: "label"
+            value: "On-Site Verifier ที่ดูแลใน Shift ถัดไป (ชื่อ-สกุล)"
+        Text254:
+            type: "text"
+            required: true
+        Label1131:
+            type: "label"
+            value: "โทรศัพท์"
+        Text256:
+            type: "text"
+            required: true
+        Label777:
+            type: "label"
+            value: "หัวหน้างาน รับทราบการต่ออายุใบอนุญาตทำงาน (ชื่อหัวหน้างาน)"
+        Text241:
+            type: "text"
+            value: "=Text276"
+            value_source: "EXPRESSION"
+        Label1206:
+            type: "label"
+            value: "เวลา"
+        DateTime98:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+    layout:
+    -   - "Label772"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1192"
+    -   - "Label773"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label774"
+        - "-"
+        - "DateTime97"
+        - "Label1207"
+        - "DateTime114"
+    -   - "Label1129"
+        - "-"
+        - "Text254"
+        - "Label1131"
+        - "Text256"
+    -   - "Label777"
+        - "-"
+        - "Text241"
+        - "Label1206"
+        - "DateTime98"
+-   title: "Renewal of Perrmit Gas test while working"
+    visible_if: "=C87=True"
+    enabled:
+        if: "=C87=True"
+        after: "ALL_PREVIOUS_SECTIONS"
+    edit_permissions:
+    -   rights_group: "onsite_verifier"
+        type: "rights_group"
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+        allow_override: "ALL"
+    gates:
+        entry:
+        -   name: "Renewal of Perrmit Gas test while working"
+    elements:
+        Label1148:
+            type: "label"
+            value: "ผลการตรวจวัดก๊าซ ขณะทำงาน กรณีขอต่อเวลาทำงาน"
+        Label1193:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label1149:
+            type: "label"
+            value: "วันที่/เวลา"
+        Label1150:
+            type: "label"
+            value: "%LEL"
+        Label1151:
+            type: "label"
+            value: "%O₂"
+        Label1152:
+            type: "label"
+            value: "H₂S"
+        Label1153:
+            type: "label"
+            value: "CO"
+        Label1154:
+            type: "label"
+            value: "=Choice57"
+        Label1155:
+            type: "label"
+            value: "AGT (ชื่อตัวบรรจง)"
+        Label1156:
+            type: "label"
+            value: "ความถี่ในการวัด (ชั่วโมง)"
+        Label1157:
+            type: "label"
+            value: "=Number184"
+        Label1158:
+            type: "label"
+            value: "=Number185"
+        Label1159:
+            type: "label"
+            value: "=Number186"
+        Label1160:
+            type: "label"
+            value: "=Number187"
+        Label1161:
+            type: "label"
+            value: "=Number188"
+        DateTime110:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Number189:
+            type: "text"
+            required: true
+            initial_value: "0"
+        Number190:
+            type: "text"
+            required: true
+            initial_value: "20.9"
+        Number191:
+            type: "text"
+            required: true
+            initial_value: "-"
+        Number192:
+            type: "text"
+            required: true
+            initial_value: "-"
+        Number193:
+            type: "text"
+            initial_value: "-"
+        Text261:
+            type: "text"
+            value: "=CONCATENATE(Text207,Text254)"
+            value_source: "EXPRESSION"
+            required: true
+    layout:
+    -   - "Label1148"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1193"
+    -   - "Label1149"
+        - "Label1150"
+        - "Label1151"
+        - "Label1152"
+        - "Label1153"
+        - "Label1154"
+        - "Label1155"
+    -   - "Label1156"
+        - "Label1157"
+        - "Label1158"
+        - "Label1159"
+        - "Label1160"
+        - "Label1161"
+        - "+"
+    -   - "DateTime110"
+        - "Number189"
+        - "Number190"
+        - "Number191"
+        - "Number192"
+        - "Number193"
+        - "Text261"
+    sections:
+    -   repeating: true
+        edit_permissions:
+        -   rights_group: "onsite_verifier"
+            type: "rights_group"
+        -   rights_group: "senior_operator"
+            type: "rights_group"
+        elements:
+            DateTime111:
+                type: "datetime"
+            Number194:
+                type: "float"
+            Number195:
+                type: "float"
+            Number196:
+                type: "float"
+            Number197:
+                type: "float"
+            Number198:
+                type: "float"
+            Text262:
+                type: "text"
+        layout:
+        -   - "DateTime111"
+            - "Number194"
+            - "Number195"
+            - "Number196"
+            - "Number197"
+            - "Number198"
+            - "Text262"
+    -   edit_permissions:
+        -   rights_group: "onsite_verifier"
+            type: "rights_group"
+        -   rights_group: "senior_operator"
+            type: "rights_group"
+        elements:
+            Label1162:
+                type: "label"
+                value: "ค่ามาตรฐาน"
+            Label1163:
+                type: "label"
+                value: "0 % LEL"
+            Label1164:
+                type: "label"
+                value: "19.5 - 23.5 %"
+            Label1165:
+                type: "label"
+                value: "5 ppm"
+            Label1166:
+                type: "label"
+                value: "25 ppm"
+            Label1167:
+                type: "label"
+                value: "=Text203"
+            Label1168:
+                type: "label"
+        layout:
+        -   - "Label1162"
+            - "Label1163"
+            - "Label1164"
+            - "Label1165"
+            - "Label1166"
+            - "Label1167"
+            - "Label1168"
+-   title: "Close Permit (Non-Open Flammable)"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+        if: "=B14=\"Non - Open Flammable Job / Vehicle Entry\""
+    visible_if: "=B14=\"Non - Open Flammable Job / Vehicle Entry\""
+    edit_permissions:
+    -   rights_group: "onsite_verifier"
+        type: "rights_group"
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    gates:
+        entry:
+        -   name: "Permit Non-Open Flammable Finished (1/2)"
+        submission:
+        -   name: "Permit Non-Open Flammable Finished (2/2)"
+    approvals:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+        allow_override: "ALL"
+    elements:
+        Label295:
+            type: "label"
+            value: "การปิดใบอนุญาตทำงาน"
+            display_style: null
+        Label1194:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label780:
+            type: "label"
+            value: "กุญแจ/ป้าย Lock อุปกรณ์, เครื่องมือ และป้ายเตือนปลดออกเรียบร้อยแล้ว"
+        ChecklistItem141:
+            type: "checklist-item"
+        Label782:
+            type: "label"
+            value: "ถ้าไม่ใช่(ระบุเหตุผล)"
+        Text197:
+            type: "text"
+            required: "=B107=FALSE"
+        Label298:
+            type: "label"
+            value: "การปิดใบอนุญาต"
+        Checkbox60:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=B109=TRUE"
+                message: "Error"
+            initial_value: "=TRUE"
+        Label299:
+            type: "label"
+            value: "งานเสร็จสมบูรณ์"
+        Checkbox61:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=B108=TRUE"
+                message: "Error"
+        Label300:
+            type: "label"
+            value: "งานยังไม่เสร็จ ระบุเหตุผล"
+        Text54:
+            type: "text"
+            required: "=B109=TRUE"
+        Label306:
+            type: "label"
+            value: "ผู้คืนใบอนุญาตการทำงาน (ชื่อหัวหน้างาน)"
+        Text56:
+            type: "text"
+            value: "=Text276"
+            value_source: "EXPRESSION"
+        DateTime36:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Label301:
+            type: "label"
+            value: "ผลการตรวจสอบพื้นที่ทำงาน"
+        Checkbox62:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=B112=TRUE"
+                message: "Error"
+            initial_value: "=TRUE"
+        Label304:
+            type: "label"
+            value: "ยอมรับ"
+        Checkbox63:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=B111=TRUE"
+                message: "Error"
+        Label305:
+            type: "label"
+            value: "ไม่ยอมรับ ระบุเหตุผล"
+        Text55:
+            type: "text"
+            required: "=B112=TRUE"
+        Label1132:
+            type: "label"
+            value: "ผู้ตรวจสอบหน้างาน  (On-site verifier)"
+        Text258:
+            type: "text"
+            value: "=if(ChecklistItem140=TRUE,Text207,Text222)"
+            value_source: "EXPRESSION"
+            required: true
+        DateTime109:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+    layout:
+    -   - "Label295"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1194"
+    -   - "Label780"
+        - "ChecklistItem141"
+        - "Label782"
+        - "Text197"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label298"
+        - "Checkbox60"
+        - "Label299"
+    -   - "+"
+        - "Checkbox61"
+        - "Label300"
+        - "Text54"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label306"
+        - "Text56"
+        - "DateTime36"
+    -   - "Label301"
+        - "Checkbox62"
+        - "Label304"
+    -   - "+"
+        - "Checkbox63"
+        - "Label305"
+        - "Text55"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label1132"
+        - "Text258"
+        - "DateTime109"
+-   title: "Close Permit (Open Flammable)"
+    visible_if: "=B14=\"Open Flammable Job\""
+    enabled:
+        if: "=B14=\"Open Flammable Job\""
+        after: "ALL_PREVIOUS_SECTIONS"
+    edit_permissions:
+    -   rights_group: "onsite_verifier"
+        type: "rights_group"
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+    gates:
+        entry:
+        -   name: "Permit Open Flammable Finished (1/2)"
+        submission:
+        -   name: "Permit Open Flammable Finished (2/2)"
+    approvals:
+    -   rights_group: "senior_operator"
+        type: "rights_group"
+        allow_override: "ALL"
+    elements:
+        Label778:
+            type: "label"
+            value: "การปิดใบอนุญาตทำงาน"
+            display_style: "SUBHEADING"
+        Label1195:
+            type: "label"
+            value: "=CONCATENATE(\"Permit No. \",Permit_No)"
+            display_style: "SUBHEADING"
+        Label783:
+            type: "label"
+            value: "กุญแจ/ป้าย Lock อุปกรณ์, เครื่องมือ และป้ายเตือนปลดออกเรียบร้อยแล้ว"
+        ChecklistItem142:
+            type: "checklist-item"
+        Label784:
+            type: "label"
+            value: "ถ้าไม่ใช่(ระบุเหตุผล)"
+        Text198:
+            type: "text"
+            required: "=B115=FALSE"
+        Label785:
+            type: "label"
+            value: "การปิดใบอนุญาต"
+        Checkbox70:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                message: "Error"
+                value: "=B117=TRUE"
+            initial_value: "=TRUE"
+        Label786:
+            type: "label"
+            value: "งานเสร็จสมบูรณ์"
+        Checkbox71:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=B116=TRUE"
+                message: "Error"
+        Label787:
+            type: "label"
+            value: "งานยังไม่เสร็จ ระบุเหตุผล"
+        Text199:
+            type: "text"
+            required: "=B117=TRUE"
+        Label788:
+            type: "label"
+            value: "ผู้คืนใบอนุญาตการทำงาน (ชื่อหัวหน้างาน)"
+        Text200:
+            type: "text"
+            value: "=Text276"
+            value_source: "EXPRESSION"
+            required: true
+        DateTime94:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+        Label800:
+            type: "label"
+            value: "ผลการตรวจสอบพื้นที่ทำงาน"
+        Checkbox76:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=B120=TRUE"
+                message: "Error"
+            initial_value: "=TRUE"
+        Label801:
+            type: "label"
+            value: "ยอมรับ"
+        Checkbox77:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=B119=TRUE"
+                message: "Error"
+        Label802:
+            type: "label"
+            value: "ไม่ยอมรับ ระบุเหตุผล"
+        Text202:
+            type: "text"
+            required: "=B120=TRUE"
+        Label923:
+            type: "label"
+            value: "ผู้ตรวจสอบหน้างาน  (On-site verifier)"
+        Text257:
+            type: "text"
+            value: "=if(ChecklistItem140=TRUE,Text254,Text222)"
+            value_source: "EXPRESSION"
+            required: true
+        DateTime108:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+    layout:
+    -   - "Label778"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1195"
+    -   - "Label783"
+        - "ChecklistItem142"
+        - "Label784"
+        - "Text198"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label785"
+        - "Checkbox70"
+        - "Label786"
+    -   - "+"
+        - "Checkbox71"
+        - "Label787"
+        - "Text199"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label788"
+        - "Text200"
+        - "DateTime94"
+    -   - "Label800"
+        - "Checkbox76"
+        - "Label801"
+    -   - "+"
+        - "Checkbox77"
+        - "Label802"
+        - "Text202"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label923"
+        - "Text257"
+        - "DateTime108"

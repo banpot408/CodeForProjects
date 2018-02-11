@@ -1,0 +1,1098 @@
+version: "1.5"
+schema: "spreadsheet-form"
+---
+sections:
+-   title: "Permit Request"
+    edit_permissions:
+    -   rights_group: "job_owner"
+        type: "rights_group"
+    -   rights_group: "contractor"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+        allow_override: "ALL"
+    gates:
+        entry:
+        -   name: "Permit Request (1/6)"
+        submission:
+        -   name: "Permit Request (2/6)"
+    elements:
+        Label75:
+            type: "label"
+            value: "ใบอนุญาตทำงานติดตั้ง / รื้อถอนนั่งร้าน (Scaffolding Erecting / Dismantling Permit)"
+            display_style: "SUBHEADING"
+        Label834:
+            type: "label"
+            value: "MOC No."
+            display_style: "SUBHEADING"
+        Text211:
+            type: "text"
+            display_style: "SUBHEADING"
+        Label1178:
+            type: "label"
+            value: "Certificate No."
+            display_style: "SUBHEADING"
+        CertificateNo:
+            type: "text"
+            value_source: "EXPRESSION"
+            display_style: "SUBHEADING"
+            can_override: false
+        Label12:
+            type: "label"
+            value: "ใบอนุญาตทำงานนี้สำหรับ (ระบุบริษัทผู้รับเหมา)"
+        Text4:
+            type: "text"
+            required: true
+        Label6:
+            type: "label"
+            value: "ผู้ขอติดตั้งนั่งร้าน  ชื่อ-สกุล"
+        SCRU_Name:
+            type: "text"
+            required: true
+        Label1122:
+            type: "label"
+            value: "อีเมล"
+        SCRU_Mail:
+            type: "text"
+            required: true
+        Label8:
+            type: "label"
+            value: "โทรศัพท์/ช่องวิทยุสื่อสาร"
+        SCRU_Tel:
+            type: "text"
+            required: true
+        Label1208:
+            type: "label"
+            value: "หัวหน้างานที่จะเข้ามาทำงาน ชื่อ-สกุล"
+            display_style: null
+        Text276:
+            type: "text"
+            value: "=SCRU_Name"
+            value_source: "EXPRESSION"
+            required: true
+        Label1209:
+            type: "label"
+            value: "อีเมล"
+        Text277:
+            type: "text"
+            value: "=SCRU_Mail"
+            value_source: "EXPRESSION"
+        Label1210:
+            type: "label"
+            value: "โทรศัพท์"
+        Text278:
+            type: "text"
+            value: "=SCRU_Tel"
+            value_source: "EXPRESSION"
+        Label9:
+            type: "label"
+            value: "วันที่ติดตั้งนั่งร้าน"
+        DateTimeStart:
+            type: "datetime"
+            value_source: "EXPRESSION"
+        Label10:
+            type: "label"
+            value: "วันที่ใช้งานนั่งร้านเสร็จ"
+        DateTimeEnd:
+            type: "datetime"
+            value_source: "EXPRESSION"
+        Label11:
+            type: "label"
+            value: "จำนวนวันที่ใช้งานนั่งร้าน"
+        day_count:
+            type: "integer"
+            value: "=if(DAYS(DateTimeEnd,DateTimeStart),DAYS(DateTimeEnd,DateTimeStart),1)"
+            value_source: "EXPRESSION"
+        Label7:
+            type: "label"
+            value: "สังกัด"
+        Text257:
+            type: "text"
+            required: true
+        Label854:
+            type: "label"
+            value: "หน่วยงาน PTTGC ที่ควบคุมงาน (ระบุชื่อหน่วยงาน)"
+        Choice65:
+            type: "choice"
+            required: true
+            options:
+            - "A-MN-A1"
+            - "A-MN-A2"
+            - "A-MN-CS"
+            - "A-P1-OP"
+            - "A-P1-TE"
+            - "A-MN-MP"
+            - "Q-SH-A1"
+            - "Q-SH-CM"
+            - "T-II-IP2"
+            - "TP-PP-PB"
+            - "H-GA-AD"
+            - "H-GA-BM"
+        Label837:
+            type: "label"
+            value: "พื้นที่ติดตั้งนั่งร้าน (GPC/BU/Plant)"
+        area1:
+            type: "hierarchy-select"
+            value_source: "EXPRESSION"
+            can_override: false
+            options_source: "datastore"
+            datastore: "area_hierarchy"
+        Label838:
+            type: "label"
+            value: "อุปกรณ์/บริเวณสถานที่ติดตั้งนั่งร้าน"
+        Text212:
+            type: "text"
+            required: true
+        Label17:
+            type: "label"
+            value: "ลักษณะรูปแบบการติดตั้ง"
+        Choice1:
+            type: "choice"
+            required: true
+            options:
+            - "None"
+            - "ติดตั้งบนพื้น"
+            - "ติดตั้งบน Platform"
+            - "ติดตั้งแบบแขวน"
+            - "ติดตั้งแบบเท้าแขนหรือสะพาน"
+            - "ติดตั้งแบบพิเศษ"
+            - "อื่นๆ"
+            input_style: "DONE"
+        Label18:
+            type: "label"
+            value: "ประเภทวัสดุของนั่งร้าน"
+        Choice2:
+            type: "choice"
+            required: true
+            options:
+            - "None"
+            - "ท่อเหล็กชุบเคลือบสังกะสี (Galvanized steel)"
+            - "ท่อเหล็กทาสี (Carbon steel with paint)"
+        Label19:
+            type: "label"
+            value: "ประเภทโครงสร้างนั่งร้าน"
+        Choice3:
+            type: "choice"
+            required: true
+            options:
+            - "None"
+            - "Very Light Duty"
+            - "General Purpose"
+            - "Heavy Duty"
+            - "Special Duty"
+            - "นั่งร้านสำเร็จรูป"
+        Label1131:
+            type: "label"
+            value: "แนบเอกสารแสดงรายละเอียดของการติดตั้งนั่งร้าน (Sketch)"
+        Attachment2:
+            type: "attachment"
+            required: true
+        Label25:
+            type: "label"
+            value: " ขนาดนั่งร้าน (ความกว้าง/ยาว ให้วัดจากเสาถึงเสาเท่านั้น)"
+        Label20:
+            type: "label"
+            value: "รายละเอียด"
+        Label21:
+            type: "label"
+            value: "กว้าง(เมตร)"
+        Label22:
+            type: "label"
+            value: "ยาว(เมตร)"
+        Label23:
+            type: "label"
+            value: "สูง(เมตร)"
+        Label24:
+            type: "label"
+            value: "ผลรวม"
+        Text8:
+            type: "text"
+        Number2:
+            type: "float"
+            required: true
+            can_override: false
+        Number3:
+            type: "float"
+        Number4:
+            type: "float"
+        Number16:
+            type: "float"
+        Text9:
+            type: "text"
+        Number5:
+            type: "float"
+        Number8:
+            type: "float"
+        Number11:
+            type: "float"
+        Number17:
+            type: "float"
+        Text10:
+            type: "text"
+            required: true
+        Number6:
+            type: "float"
+        Number9:
+            type: "float"
+        Number12:
+            type: "float"
+        Number18:
+            type: "float"
+        Text11:
+            type: "text"
+        Number7:
+            type: "float"
+        Number10:
+            type: "float"
+        Number13:
+            type: "float"
+        Number19:
+            type: "float"
+        Text213:
+            type: "text"
+        Number24:
+            type: "float"
+        Number25:
+            type: "float"
+        Number26:
+            type: "float"
+        Number27:
+            type: "float"
+        ChecklistItem19:
+            type: "checklist-item"
+            required: true
+            initial_value: "=FALSE"
+        Label841:
+            type: "label"
+            value: "นั่งร้านสูงเกิน 21 ม. หรือนั่งร้านแบบพิเศษ หรือไม่"
+        Label843:
+            type: "label"
+            value: "ทีม Technical Approver"
+        Choice62:
+            type: "choice"
+            options:
+            - "A-MN-A1"
+            - "Project"
+        Label1133:
+            type: "label"
+            value: "วิศวกรโยธาผู้ออกแบบ"
+        Eng_Name:
+            type: "text"
+            required: "=A18=TRUE"
+        Label1134:
+            type: "label"
+            value: "อีเมล"
+        Eng_Mail:
+            type: "text"
+            required: "=A18=TRUE"
+        Label1135:
+            type: "label"
+            value: "โทรศัพท์"
+        Eng_Tel:
+            type: "text"
+            required: "=A18=TRUE"
+        Label1136:
+            type: "label"
+            value: "ผู้อนุญาตนั่งร้าน (Technical Approver)"
+        TCA_Name:
+            type: "text"
+            required: true
+        Label1137:
+            type: "label"
+            value: "อีเมล"
+        TCA_Mail:
+            type: "text"
+            required: true
+        Label1138:
+            type: "label"
+            value: "โทรศัพท์"
+        TCA_Tel:
+            type: "text"
+            required: true
+        Label26:
+            type: "label"
+            value: "ลงชื่อหัวหน้าผู้รับเหมาที่ติดตั้ง"
+        CTT_Name:
+            type: "text"
+            required: true
+        Label1129:
+            type: "label"
+            value: "อีเมล"
+        CTT_Mail:
+            type: "text"
+            required: true
+        Label27:
+            type: "label"
+            value: "โทรศัพท์"
+        CTT_Tel:
+            type: "text"
+            required: true
+        Label1128:
+            type: "label"
+            value: "ลงชื่อ PTTGC Job Owner"
+        JON_Name:
+            type: "text"
+            required: true
+        Label1126:
+            type: "label"
+            value: "อีเมล"
+        JON_Mail:
+            type: "text"
+            required: true
+        Label848:
+            type: "label"
+            value: "โทรศัพท์"
+        Number28:
+            type: "text"
+            required: true
+    layout:
+    -   - "Label75"
+        - "-"
+        - "Label834"
+        - "Text211"
+        - "Label1178"
+        - "CertificateNo"
+    -   - "Label12"
+        - "-"
+        - "Text4"
+        - "-"
+    -   - "Label6"
+        - "SCRU_Name"
+        - "Label1122"
+        - "SCRU_Mail"
+        - "Label8"
+        - "SCRU_Tel"
+    -   - "Label1208"
+        - "Text276"
+        - "Label1209"
+        - "Text277"
+        - "Label1210"
+        - "Text278"
+    -   - "Label9"
+        - "DateTimeStart"
+        - "Label10"
+        - "DateTimeEnd"
+        - "Label11"
+        - "day_count"
+    -   - "Label7"
+        - "Text257"
+        - "Label854"
+        - "Choice65"
+    -   - "Label837"
+        - "area1"
+        - "-"
+    -   - "Label838"
+        - "Text212"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label17"
+        - "Choice1"
+        - "Label18"
+        - "Choice2"
+        - "Label19"
+        - "Choice3"
+    -   - "Label1131"
+        - "-"
+        - "Attachment2"
+    -   - "Label25"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label20"
+        - "-"
+        - "Label21"
+        - "Label22"
+        - "Label23"
+        - "Label24"
+    -   - "Text8"
+        - "-"
+        - "Number2"
+        - "Number3"
+        - "Number4"
+        - "Number16"
+    -   - "Text9"
+        - "-"
+        - "Number5"
+        - "Number8"
+        - "Number11"
+        - "Number17"
+    -   - "Text10"
+        - "-"
+        - "Number6"
+        - "Number9"
+        - "Number12"
+        - "Number18"
+    -   - "Text11"
+        - "-"
+        - "Number7"
+        - "Number10"
+        - "Number13"
+        - "Number19"
+    -   - "Text213"
+        - "-"
+        - "Number24"
+        - "Number25"
+        - "Number26"
+        - "Number27"
+    -   - "ChecklistItem19"
+        - "Label841"
+        - "-"
+        - "-"
+        - "Label843"
+        - "Choice62"
+    -   - "Label1133"
+        - "Eng_Name"
+        - "Label1134"
+        - "Eng_Mail"
+        - "Label1135"
+        - "Eng_Tel"
+    -   - "Label1136"
+        - "TCA_Name"
+        - "Label1137"
+        - "TCA_Mail"
+        - "Label1138"
+        - "TCA_Tel"
+    -   - "Label26"
+        - "CTT_Name"
+        - "Label1129"
+        - "CTT_Mail"
+        - "Label27"
+        - "CTT_Tel"
+    -   - "Label1128"
+        - "JON_Name"
+        - "Label1126"
+        - "JON_Mail"
+        - "Label848"
+        - "Number28"
+-   title: "Scaffolding Height over 21 Meters"
+    visible_if: "=A18=true"
+    enabled:
+        if: "=A18=true"
+        after: "PREVIOUS_SECTION"
+    gates:
+        entry:
+        -   name: "Permit Request (3/6)"
+        submission:
+        -   name: "Permit Request (4/6)"
+    edit_permissions:
+    -   rights_group: "contractor_scaffolding_approver"
+        type: "rights_group"
+    -   rights_group: "job_owner"
+        type: "rights_group"
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+        allow_override: "ALL"
+    elements:
+        Label59:
+            type: "label"
+            value: "กรณีตั้งนั่งร้านสูงเกิน 21 ม. หรือนั่งร้านแบบพิเศษจะต้องแนบเอกสารการออกแบบ คำนวณโดยวิศวกรโยธาระดับสามัญหรือวุฒิวิศวกร และลงนามรับรองการตรวจสอบให้ใช้งาน"
+        Label1189:
+            type: "label"
+            value: "=CONCATENATE(\"Specific Work Permit No. \",CertificateNo)"
+            display_style: "SUBHEADING"
+        Label60:
+            type: "label"
+            value: "ระบุชื่อวิศวกรโยธาผู้ออกแบบ คำนวณ และควบคุม"
+        Text16:
+            type: "text"
+            required: true
+            initial_value: "=Eng_Name"
+        Date6:
+            type: "date"
+            required: true
+        Label1132:
+            type: "label"
+            value: "แนบเอกสาร"
+        Attachment1:
+            type: "attachment"
+            display_style: "SUBHEADING"
+            can_override: false
+    layout:
+    -   - "Label59"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1189"
+        - "-"
+    -   - "Label60"
+        - "-"
+        - "Text16"
+        - "Date6"
+        - "Label1132"
+        - "Attachment1"
+-   title: "Technical Approver review Basic Data"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    gates:
+        entry:
+        -   name: "Permit Request (5/6)"
+        submission:
+        -   name: "Permit Request (6/6)"
+    edit_permissions:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+        allow_override: "ALL"
+    elements:
+        Label29:
+            type: "label"
+            value: "ตรวจสอบแล้วสามารถขอ Work permit กับ Area owner เพื่อติดตั้งนั่งร้านได้"
+        Label1211:
+            type: "label"
+            value: "=CONCATENATE(\"Specific Work Permit No. \",CertificateNo)"
+            display_style: "SUBHEADING"
+        Label30:
+            type: "label"
+            value: "ลงชื่อผู้อนุญาตนั่งร้าน (Technical Approver) ได้ตรวจสอบความถูกต้องเรียบร้อยแล้ว"
+        Checkbox81:
+            type: "checklist-item"
+            required: true
+        Date15:
+            type: "datetime"
+            required: true
+            initial_value: "=NOW()"
+            date_format: "SHORT"
+    layout:
+    -   - "Label29"
+        - "-"
+        - "-"
+        - null
+        - "Label1211"
+        - "-"
+    -   - "Label30"
+        - "-"
+        - "-"
+        - "Checkbox81"
+        - "Date15"
+-   title: "After Subcontract build scaffloding and submit to Technical Approver"
+    approvals:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+        allow_override: "ALL"
+    edit_permissions:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+    -   rights_group: "contractor_scaffolding_approver"
+        type: "rights_group"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    gates:
+        entry:
+        -   name: "Inspection and Approval (1/6)"
+        submission:
+        -   name: "Inspection and Approval (2/6)"
+    elements:
+        Label53:
+            type: "label"
+            value: "ข้าพเจ้าได้ตรวจสอบนั่งร้านและขอยืนยันว่านั่งร้านที่ทำการติดตั้งเป็นไปตามมาตรฐานและข้อกำหนดด้านความปลอดภัยอย่างครบถ้วนแล้ว"
+        Label1212:
+            type: "label"
+            value: "=CONCATENATE(\"Specific Work Permit No. \",CertificateNo)"
+            display_style: "SUBHEADING"
+        Label54:
+            type: "label"
+            value: "ผู้รับเหมาที่ตรวจสอบนั่งร้านได้ทำการตรวจสอบเรียบร้อยแล้ว"
+        Checkbox83:
+            type: "checkbox"
+        Date4:
+            type: "date"
+            initial_value: "=NOW()"
+            date_format: "SHORT"
+    layout:
+    -   - "Label53"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1212"
+        - "-"
+    -   - "Label54"
+        - "-"
+        - "-"
+        - "Checkbox83"
+        - "Date4"
+-   title: "Technical Approver Inspection"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    edit_permissions:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+        allow_override: "ALL"
+    gates:
+        entry:
+        -   name: "Inspection and Approval (3/6)"
+        submission:
+        -   name: "Inspection and Approval (4/6)"
+    elements:
+        Label32:
+            type: "label"
+            value: "รายการตรวจสอบนั่งร้านหลังการติดตั้ง"
+        Label1213:
+            type: "label"
+            value: "=CONCATENATE(\"Specific Work Permit No. \",CertificateNo)"
+            display_style: "SUBHEADING"
+        ChecklistItem1:
+            type: "checklist-item"
+        Label33:
+            type: "label"
+            value: "นั่งร้านไม่กีดขวางทางเข้า-ออกหรือพื้นที่การทำงาน"
+        ChecklistItem10:
+            type: "checklist-item"
+        Label42:
+            type: "label"
+            value: "อุปกรณ์จับยึดนั่งร้าน ติดตั้งได้อย่างถูกต้องและมั่นคง"
+        ChecklistItem2:
+            type: "checklist-item"
+        Label34:
+            type: "label"
+            value: "อุปกรณ์นั่งร้านได้มาตรฐาน ไม่ชำรุด"
+        ChecklistItem11:
+            type: "checklist-item"
+        Label43:
+            type: "label"
+            value: "บันไดขึ้น - ลงนั่งร้านติดตั้งถูกต้องและมั่นคง นั่งร้านสูงมีชั้นพักทุก 6 ม."
+        ChecklistItem3:
+            type: "checklist-item"
+        Label35:
+            type: "label"
+            value: "นั่งร้านติดตั้งได้ระดับ"
+        ChecklistItem12:
+            type: "checklist-item"
+        Label52:
+            type: "label"
+            value: "ครอบปลายท่อนั่งร้านบริเวณทางเข้า - ออกที่สูงไม่เกิน 1.8 เมตร"
+        ChecklistItem4:
+            type: "checklist-item"
+        Label36:
+            type: "label"
+            value: "แผ่นฐานรองนั่งร้านมีขนาดเหมาะสมและแข็งแรง"
+        ChecklistItem14:
+            type: "checklist-item"
+        Label45:
+            type: "label"
+            value: "ติดตั้งตาข่ายกันตก สำหรับนั่งร้านบนถนนหรือบนพื้นที่การทำงาน"
+        ChecklistItem5:
+            type: "checklist-item"
+        Label37:
+            type: "label"
+            value: "ติดตั้งเสา ตง คานอย่างถูกต้อง ได้มาตรฐาน"
+        ChecklistItem13:
+            type: "checklist-item"
+        Label46:
+            type: "label"
+            value: "ล้อนั่งร้านถูกล็อคอย่างมั่นคง"
+        ChecklistItem6:
+            type: "checklist-item"
+        Label38:
+            type: "label"
+            value: "ติดตั้งราวกันตกอย่างถูกต้องและมั่นคง"
+        ChecklistItem15:
+            type: "checklist-item"
+        Label47:
+            type: "label"
+            value: "ระยะห่างจากสายส่งไฟฟ้าแรงสูงปลอดภัยเพียงพอ"
+        ChecklistItem7:
+            type: "checklist-item"
+        Label39:
+            type: "label"
+            value: "ติดตั้ง Toe Boards อย่างถูกต้องและมั่นคง"
+        ChecklistItem16:
+            type: "checklist-item"
+        Label48:
+            type: "label"
+            value: "มีการกั้นพื้นที่การทำงาน และติดป้ายเตือนอันตรายอย่างเหมาะสม"
+        ChecklistItem8:
+            type: "checklist-item"
+        Label40:
+            type: "label"
+            value: "ติดตั้ง Platform เพียงพอและยึดอย่างมั่นคง"
+        ChecklistItem17:
+            type: "checklist-item"
+        Label49:
+            type: "label"
+            value: " ไม่ยึดโครงสร้างนั่งร้านกับท่อ อุปกรณ์ของโรงงาน"
+        ChecklistItem9:
+            type: "checklist-item"
+        Label41:
+            type: "label"
+            value: "ติดตั้งค้ำยัน อย่างเพียงพอ"
+        ChecklistItem18:
+            type: "checklist-item"
+            value: "=A18"
+            value_source: "EXPRESSION"
+        Label50:
+            type: "label"
+            value: "นั่งร้านสูงเกิน 21 เมตร ได้จัดให้มีวิศกรโยธาออกแบบ คำนวณและลงนาม"
+    layout:
+    -   - "Label32"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1213"
+        - "-"
+    -   - "ChecklistItem1"
+        - "Label33"
+        - "-"
+        - "ChecklistItem10"
+        - "Label42"
+        - "-"
+    -   - "ChecklistItem2"
+        - "Label34"
+        - "-"
+        - "ChecklistItem11"
+        - "Label43"
+        - "-"
+    -   - "ChecklistItem3"
+        - "Label35"
+        - "-"
+        - "ChecklistItem12"
+        - "Label52"
+        - "-"
+    -   - "ChecklistItem4"
+        - "Label36"
+        - "-"
+        - "ChecklistItem14"
+        - "Label45"
+        - "-"
+    -   - "ChecklistItem5"
+        - "Label37"
+        - "-"
+        - "ChecklistItem13"
+        - "Label46"
+        - "-"
+    -   - "ChecklistItem6"
+        - "Label38"
+        - "-"
+        - "ChecklistItem15"
+        - "Label47"
+        - "-"
+    -   - "ChecklistItem7"
+        - "Label39"
+        - "-"
+        - "ChecklistItem16"
+        - "Label48"
+        - "-"
+    -   - "ChecklistItem8"
+        - "Label40"
+        - "-"
+        - "ChecklistItem17"
+        - "Label49"
+        - "-"
+    -   - "ChecklistItem9"
+        - "Label41"
+        - "-"
+        - "ChecklistItem18"
+        - "Label50"
+        - "-"
+-   enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    title: "Result of Permit"
+    edit_permissions:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+        allow_override: "ALL"
+    gates:
+        entry:
+        -   name: "Inspection and Approval (5/6)"
+        submission:
+        -   name: "Inspection and Approval (6/6)"
+    elements:
+        Label840:
+            type: "label"
+            value: "ผลการพิจารณาการอนุญาตให้ใช้นั่งร้าน"
+        Label1214:
+            type: "label"
+            value: "=CONCATENATE(\"Specific Work Permit No. \",CertificateNo)"
+            display_style: "SUBHEADING"
+        Checkbox1:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=A41=TRUE"
+                message: "Error"
+            required: "=A41=FALSE"
+        Label56:
+            type: "label"
+            value: "อนุญาตให้ใช้นั่งร้านได้ ป้ายอนุญาตนั่งร้าน (Scaff Tag) เลขที่"
+        Number21:
+            type: "text"
+            required: "=A40=TRUE"
+        Checkbox2:
+            type: "checkbox"
+            invalid_if:
+            -   op: "="
+                value: "=A40=TRUE"
+                message: "Error"
+            required: "=A40=FALSE"
+        Label57:
+            type: "label"
+            value: "ไม่อนุญาตให้ใช้นั่งร้าน เนื่องจาก"
+        Text14:
+            type: "text"
+            required: "=A41=TRUE"
+        Label58:
+            type: "label"
+            value: "ลงชื่อผู้อนุญาตนั่งร้าน (Technical Approver) ได้ตรวจสอบความเรียบร้อยแล้ว"
+        Checkbox5:
+            type: "checkbox"
+            required: true
+        Date5:
+            type: "date"
+            required: true
+        Label839:
+            type: "label"
+            value: "ข้อเสนอแนะเพิ่มเติม(ถ้ามี)"
+        Text214:
+            type: "text"
+    layout:
+    -   - "Label840"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1214"
+        - "-"
+    -   - "Checkbox1"
+        - "Label56"
+        - "-"
+        - "Number21"
+    -   - "Checkbox2"
+        - "Label57"
+        - "-"
+        - "Text14"
+    -   - "Label58"
+        - "-"
+        - "Checkbox5"
+        - "Date5"
+    -   - "Label839"
+    -   - "Text214"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "+"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+-   title: "Renew Date Request"
+    approvals:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+        allow_override: "ALL"
+    edit_permissions:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+    -   rights_group: "job_owner"
+        type: "rights_group"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    gates:
+        entry:
+        -   name: "Working"
+        submission:
+        -   name: "Renewal of Specific (1/3)"
+    elements:
+        Label588:
+            type: "label"
+            value: "Job Owner ต้องการต่ออายุใบอนญาต"
+        ChecklistItem140:
+            type: "checklist-item"
+            required: true
+        Label1215:
+            type: "label"
+            value: "=CONCATENATE(\"Specific Work Permit No. \",CertificateNo)"
+            display_style: "SUBHEADING"
+    layout:
+    -   - "Label588"
+        - "ChecklistItem140"
+        - null
+        - null
+        - "Label1215"
+        - "-"
+-   title: "Renew Date"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+        if: "=B46=True"
+    visible_if: "=B46=True"
+    edit_permissions:
+    -   rights_group: "job_owner"
+        type: "rights_group"
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+        allow_override: "ALL"
+    gates:
+        entry:
+        -   name: "Renewal of Specific (2/3)"
+        submission:
+        -   name: "Renewal of Specific (3/3)"
+    elements:
+        Label61:
+            type: "label"
+            value: "วันที่ใช้งานนั่งร้าน (เริ่มคิดค่าใช้จ่าย)"
+        Date7:
+            type: "date"
+            required: true
+        Label1216:
+            type: "label"
+            value: "=CONCATENATE(\"Specific Work Permit No. \",CertificateNo)"
+            display_style: "SUBHEADING"
+        Label63:
+            type: "label"
+            value: "กรณีจำเป็นต้องใช้นั่งร้านเกิน (วัน)"
+        Number22:
+            type: "float"
+        Label64:
+            type: "label"
+            value: "ซึ่งจะมีการเก็บค่าเช่านั่งร้านเพิ่มเติม ได้รับการยืนยันและรับรองจาก PTTGC Job Owner แล้ว"
+        Label65:
+            type: "label"
+            value: "ลงชื่อ PTTGC Job Owner"
+        Text254:
+            type: "text"
+            value: "=JON_Name"
+            value_source: "EXPRESSION"
+        Date9:
+            type: "date"
+            required: true
+    layout:
+    -   - "Label61"
+        - "-"
+        - "Date7"
+        - null
+        - "Label1216"
+        - "-"
+    -   - "Label63"
+        - "Number22"
+        - "Label64"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label65"
+        - "Text254"
+        - "Date9"
+-   title: "Dismantling"
+    enabled:
+        after: "ALL_PREVIOUS_SECTIONS"
+    edit_permissions:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "technical_approval"
+        type: "rights_group"
+        allow_override: "ALL"
+    gates:
+        entry:
+        -   name: "Dismantling (1/2)"
+        submission:
+        -   name: "Dismantling (2/2)"
+    elements:
+        Label778:
+            type: "label"
+            value: "การรื้อถอนนั่งร้าน"
+            display_style: "SUBHEADING"
+        Label1217:
+            type: "label"
+            value: "=CONCATENATE(\"Specific Work Permit No. \",CertificateNo)"
+            display_style: "SUBHEADING"
+        Label66:
+            type: "label"
+            value: "ผู้ขอรื้อถอนนั่งร้าน (ชื่อ-สกุล)"
+        Text215:
+            type: "text"
+            value: "=JON_Name"
+            value_source: "EXPRESSION"
+        Label1218:
+            type: "label"
+            value: "อีเมล"
+        Text279:
+            type: "text"
+        Label67:
+            type: "label"
+            value: "โทรศัพท์/ช่องวิทยุสื่อสาร"
+        Number23:
+            type: "text"
+        Label68:
+            type: "label"
+            value: "วันที่แจ้งให้รื้อถอนนั่งร้าน (ตัดค่าเช่า)"
+        Date17:
+            type: "date"
+            required: true
+        Label69:
+            type: "label"
+            value: "ข้าพเจ้าขอยืนยันว่าได้ทำการรื้อถอนนั่งร้านพร้อมทำความสะอาดพื้นที่ทำงานเสร็จเรียบร้อยแล้ว (PTTGC Job Owner เก็บต้นฉบับใบอนุญาตอย่างน้อย 1 เดือน)"
+        Label70:
+            type: "label"
+            value: "ลงชื่อหัวหน้าผู้รับเหมาที่ติดตั้ง"
+        Text255:
+            type: "text"
+            value: "=CTT_Name"
+            value_source: "EXPRESSION"
+        Date13:
+            type: "date"
+            required: true
+        Label74:
+            type: "label"
+            value: "ลงชื่อ PTTGC Job Owner"
+        Text256:
+            type: "text"
+            value: "=JON_Name"
+            value_source: "EXPRESSION"
+        Date12:
+            type: "date"
+            required: true
+        Label72:
+            type: "label"
+            value: "อนุมัติปิดใบอนุญาตนั่งร้าน (ผู้อนุญาตเก็บสำเนาใบอนุญาตนั่งร้าน อย่างน้อย 1 เดือนหลังจากปิดใบอนุญาต)"
+    layout:
+    -   - "Label778"
+        - "-"
+        - "-"
+        - "-"
+        - "Label1217"
+        - "-"
+    -   - "Label66"
+        - "Text215"
+        - "Label1218"
+        - "Text279"
+        - "Label67"
+        - "Number23"
+    -   - "Label68"
+        - "Date17"
+    -   - "Label69"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+    -   - "Label70"
+        - "Text255"
+        - "Date13"
+    -   - "Label74"
+        - "Text256"
+        - "Date12"
+    -   - "Label72"
+        - "-"
+        - "-"
+        - "-"
+        - "-"
+        - "-"

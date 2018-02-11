@@ -1,0 +1,59 @@
+version: "1.3"
+schema: "spreadsheet-form"
+---
+sections:
+-   title: "Section 1"
+    gates:
+        entry:
+        -   name: "Section 1 Entry"
+        submission:
+        -   name: "Section 1 Submission"
+    edit_permissions:
+    -   rights_group: "admin"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "admin"
+        type: "rights_group"
+    elements:
+        ChecklistItem1:
+            type: "checklist-item"
+        Choice2:
+            type: "choice"
+            datastore: "userList"
+            options_source: "datastore"
+        Choice1:
+            type: "choice"
+            options:
+            - "Choice 1"
+            - "Choice 2"
+            - "Choice 3"
+            - "Choice 4"
+            - "Choice 5"
+        Checkbox1:
+            type: "checkbox"
+    layout:
+    -   - "ChecklistItem1"
+        - "Choice2"
+    - []
+    -   - "Choice1"
+    - []
+    -   - "Checkbox1"
+    - []
+    - []
+    - []
+    - []
+    - []
+-   title: "Section 2"
+    gates:
+        entry:
+        -   name: "Section 2 Entry"
+        submission:
+        -   name: "Section 2 Submission"
+    edit_permissions:
+    -   rights_group: "admin"
+        type: "rights_group"
+    approvals:
+    -   rights_group: "admin"
+        type: "rights_group"
+    elements: {}
+    layout: []

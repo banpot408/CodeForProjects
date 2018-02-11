@@ -1,0 +1,11 @@
+version: "1.1"
+schema: "logbook"
+---
+overridden_mixins:
+    recordclass:
+        j5.PermitToWork.PermitToWork.PermitsMixin: "PTTGC.PermitToWork.CustomPermitToWork.CustomPermitsMixin"
+mixins:
+    recordclass:
+    - "PTTGC.PermitToWork.PTWMixin.PTWMixin"
+logmodel: "PTTGC.PermitToWork.CustomPermitToWork.PTWLogModel"
+logpage_component: "PTTGC.PermitToWork.CustomPermitToWork.CustomPermitToWorkLogPage"

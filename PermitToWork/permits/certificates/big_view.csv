@@ -1,0 +1,11 @@
+label.certificate_type,field.certificate_type,label.description_pttgc,-,label.status,field.status,$schema big-view-layout/v1.0
+label.certificate_no,field.certificate_no,field.description_pttgc,field.description_pttgc,label.select_position_button,field.select_position_button
+label.valid_start,field.valid_start,+,+,label.prepared_by,field.prepared_by
+label.valid_end,field.valid_end,+,+,label.attachment,field.attachment
+label.area1,field.area1,+,+,+,+
+label.area2,field.area2,+,+,+,+
+label.area3,field.area3,+,+,+,+
+label.area4,field.area4,+,+,+,+
+label.related_permits_links,field.related_permits_links,+,+,+,+
+label.related_permits,field.related_permits,+,+,label.report_button,field.report_button
+8,12,8,52,8,12

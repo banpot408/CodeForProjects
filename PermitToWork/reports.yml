@@ -1,0 +1,33 @@
+schema: "reports"
+version: "1.0"
+---
+reports:
+    cold_work: #this should match the rptdesign file name
+        title: "Cold Work Report"
+        preview_available: false
+        is_handover_report: false
+        required_dataset_libraries: ["cold_work_reportlib"]
+    confined_space_entry: #this should match the rptdesign file name
+        title: "Confined Space Entry Report"
+        preview_available: false
+        is_handover_report: false
+        required_dataset_libraries: ["confined_space_entry_reportlib"]
+    hot_work: #this should match the rptdesign file name
+        title: "Hot Work Report"
+        preview_available: false
+        is_handover_report: false
+        required_dataset_libraries: ["hot_work_reportlib"]
+    scaffolding: #this should match the rptdesign file name
+        title: "Scaffolding Report"
+        preview_available: false
+        is_handover_report: false
+        required_dataset_libraries: ["scaffolding_reportlib"]
+generated_dataset_libraries:
+    cold_work_reportlib:
+        dataset_class: "PTTGC.PermitToWork.DataSets.ColdWorkDataSet"
+    confined_space_entry_reportlib:
+        dataset_class: "PTTGC.PermitToWork.DataSets.ConfinedSpaceEntryDataSet"
+    hot_work_reportlib:
+        dataset_class: "PTTGC.PermitToWork.DataSets.HotWorkDataSet"
+    scaffolding_reportlib:
+        dataset_class: "PTTGC.PermitToWork.DataSets.ScaffoldingDataSet"

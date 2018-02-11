@@ -1,0 +1,92 @@
+version: "1.0"
+schema: "fields"
+---
+fields:
+    valid_end_minus_1:
+        inputtype: "DATETIME"
+        datatype: "datetime"
+        hide_in_filter_dialog: true
+    valid_end_plus_1:
+        inputtype: "DATETIME"
+        datatype: "datetime"
+        hide_in_filter_dialog: true
+    notification_date_15_day:
+        inputtype: "DATETIME"
+        datatype: "datetime"
+        hide_in_filter_dialog: true
+    valid_plus_1_email_status:
+        inputtype: "TEXT"
+        datatype: "str"
+        hide_in_filter_dialog: true
+        datalength: 20
+        default_value: "Not Sent"
+    valid_minus_1_email_status:
+        inputtype: "TEXT"
+        datatype: "str"
+        hide_in_filter_dialog: true
+        datalength: 20
+        default_value: "Not Sent"
+    report_button:
+        inputtype: "ACTION_BUTTON"
+        button_label: "View Report"
+        assigned_action: "record.view_report_clicked(sa_session, \"pdf\")"
+        view_rights: "\"True\" = \"True\""
+        label: "View Report"
+    scaffold_image:
+        inputtype: "THUMBNAILGALLERY"
+        label: "Sketch"
+        grid_label: "Sketch"
+        thumbnail_columns: 4
+        thumbnail_width: 128
+        show_thumbnail: "True"
+        link_to_industraform:
+            attribute_name: "Attachment5"
+    section_count:
+        inputtype: "INTEGER"
+        datatype: "int"
+    day_count:
+        inputtype: "INTEGER"
+        datatype: "int"
+        link_to_industraform:
+            attribute_name: "day_count"
+        lowlimit: 0
+        minvalue: 1
+    description_pttgc:
+        inputtype: "TEXT"
+        label: "Description of work"
+        grid_label: "Description of work"
+        link_to_industraform:
+            attribute_name: "Text225"
+        required_value: true
+adjusted_fields:
+    valid_start:
+        link_to_industraform:
+            attribute_name: "DateTimeStart"
+    valid_end:
+        link_to_industraform:
+            attribute_name: "DateTimeEnd"
+    area1:
+        link_to_industraform:
+            attribute_name: "area1"
+        label: "Branch"
+        constrain_lowerlevels: true
+        auto_select_single_options: true
+    area2:
+        link_to_industraform:
+            attribute_name: "area2"
+        label: "Area"
+        constrain_lowerlevels: false
+        auto_select_single_options: true
+    area3:
+        link_to_industraform:
+            attribute_name: "area3"
+        label: "Process Area"
+        constrain_lowerlevels: false
+        auto_select_single_options: true
+    area4:
+        link_to_industraform:
+            attribute_name: "area4"
+        constrain_lowerlevels: false
+        auto_select_single_options: true
+    description:
+        default_value: "SPECIFIC WORK PERMITS"

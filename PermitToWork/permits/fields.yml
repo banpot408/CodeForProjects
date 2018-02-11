@@ -1,0 +1,93 @@
+version: "1.0"
+schema: "fields"
+---
+fields:
+    report_button:
+        inputtype: "ACTION_BUTTON"
+        button_label: "View Report"
+        label: "View Report"
+        view_rights: "\"True\" = \"True\""
+        assigned_action: "record.view_report_clicked(sa_session, \"pdf\")"
+    scaffold_image:
+        inputtype: "THUMBNAILGALLERY"
+        label: "Sketch"
+        grid_label: "Sketch"
+        thumbnail_columns: 4
+        thumbnail_width: 128
+        show_thumbnail: "True"
+    is_flamable:
+        inputtype: "TEXT"
+        link_to_industraform:
+            attribute_name: "Choice62"
+    valid_end_minus_1:
+        inputtype: "DATETIME"
+        datatype: "datetime"
+        hide_in_filter_dialog: true
+    valid_end_plus_1:
+        inputtype: "DATETIME"
+        datatype: "datetime"
+        hide_in_filter_dialog: true
+    notification_date_15_day:
+        inputtype: "DATETIME"
+        datatype: "datetime"
+        hide_in_filter_dialog: true
+    valid_plus_1_email_status:
+        inputtype: "TEXT"
+        datatype: "str"
+        hide_in_filter_dialog: true
+        datalength: 20
+        default_value: "Not Sent"
+    valid_minus_1_email_status:
+        inputtype: "TEXT"
+        datatype: "str"
+        hide_in_filter_dialog: true
+        datalength: 20
+        default_value: "Not Sent"
+    section_count:
+        inputtype: "INTEGER"
+        datatype: "int"
+    description_pttgc:
+        inputtype: "TEXT"
+        link_to_industraform:
+            attribute_name: "Text225"
+        label: "Description of work"
+        required_value: true
+        grid_label: "Description of work"
+adjusted_fields:
+    valid_start:
+        link_to_industraform:
+            attribute_name: "DateTimeStart"
+        default_value: ""
+    valid_end:
+        link_to_industraform:
+            attribute_name: "DateTimeEnd"
+    area1:
+        label: "Branch"
+        link_to_industraform:
+            attribute_name: "area1"
+        constrain_lowerlevels: true
+        auto_select_single_options: true
+    area2:
+        label: "Area"
+        link_to_industraform:
+            attribute_name: "area2"
+        constrain_lowerlevels: false
+        auto_select_single_options: true
+    area3:
+        label: "Process Area"
+        link_to_industraform:
+            attribute_name: "area3"
+        constrain_lowerlevels: false
+        auto_select_single_options: true
+    area4:
+        link_to_industraform:
+            attribute_name: "area4"
+        constrain_lowerlevels: false
+        auto_select_single_options: true
+    description:
+        link_to_industraform:
+            attribute_name: ""
+        default_value: "PERMITS"
+    permit_no:
+        link_to_industraform:
+            attribute_name: "Permit_No"
